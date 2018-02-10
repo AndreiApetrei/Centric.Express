@@ -8,6 +8,7 @@ namespace CentricExpress.Business.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            ////comment
         }
     }
 }
