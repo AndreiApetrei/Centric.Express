@@ -1,7 +1,156 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-</div>
+<header class="app-header">
+  <div class="container">
+    <nav class="navigation">
+      <div class="navigation-logo">
+        <i class="logo"><img src="/assets/images/logo.png" alt="our page logo" title="Page Logo"/></i>
+      </div>
+      <div class="user-info">
+        <div class="user-picture">
+          <img src="/assets/images/doge.jpg"/>
+        </div>
+        <div class="user-name">
+          <span class="greeting">Hello,</span>
+          <span class="name">Doge</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="app-header-swirbar">
+    <img class="swirbar" src="/assets/images/centric-swirlbar.png" alt="swirlbar separator"/>
+  </div>
+</header>
 
+<main class="app-main">
+  <div class="container">
+      <section class="items-list spacer-top">
+        <h2 class="title">Product List</h2>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-2">
+              <div class="item-card">
+                <h3 class="item-card-title">Mahogany bed</h3>
+                <img class="item-card-img" src="/assets/images/mahogany-bed.png" alt="A mahogany bed" title="Mahogany bed" />
+                <span class="item-card-price">100$</span>
+                <div class="item-card-button floating-button"></div>
+              </div>
+            </div>
+            <div class="col-2">
+                <div class="item-card">
+                  <h3 class="item-card-title">Black Wardrobe</h3>
+                  <img class="item-card-img" src="/assets/images/black-wardrobe.png" alt="A black wardrobe" title="Black Wardrobe" />
+                  <span class="item-card-price">150$</span>
+                  <div class="item-card-button floating-button"></div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="item-card">
+                  <h3 class="item-card-title">Abstract Lamp</h3>
+                  <img class="item-card-img" src="/assets/images/abstract-lamp.png" alt="An abstract looking lamp" title="Abstract lamp" />
+                  <span class="item-card-price">200$</span>
+                  <div class="item-card-button floating-button"></div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="item-card">
+                  <h3 class="item-card-title">Flower Cushions</h3>
+                  <img class="item-card-img" src="/assets/images/flower-cushions.png" alt="Cushions with flowers" title="Flower Cushions" />
+                  <span class="item-card-price">100$</span>
+                  <div class="item-card-button floating-button"></div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="item-card">
+                  <h3 class="item-card-title">Dusty-Pink Couch</h3>
+                  <img class="item-card-img" src="/assets/images/dusty-pink-couch.png" alt="A couch that is dusty and pink" title="Dusty-Pink Couch" />
+                  <span class="item-card-price">150$</span>
+                  <div class="item-card-button floating-button"></div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="item-card">
+                  <h3 class="item-card-title">Wing Chair</h3>
+                  <img class="item-card-img" src="/assets/images/wing-chair.png" alt="A black winged chair" title="Wing Chair" />
+                  <span class="item-card-price">200$</span>
+                  <div class="item-card-button floating-button"></div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="items-checkout spacer">
+          <h2 class="title">My Cart</h2>
+
+          <div class="table checkout-table">
+            <div class="table-header">
+              <div class="table-row">
+                <div class="row-data data-width-half"></div>
+                <div class="row-data">Product name</div>
+                <div class="row-data">Quantity</div>
+                <div class="row-data">Price</div>
+                <div class="row-data"></div>
+              </div>
+            </div>
+            <div class="table-body">
+              <div class="table-row">
+                  <div class="row-data data-width-half align-center">
+                      <img class="row-data-img" src="/assets/images/mahogany-bed.png" alt="A mahogany bed" title="Mahogany bed" />
+                  </div>
+                  <div class="row-data">Mahogany bed</div>
+                  <div class="row-data">
+                    <div class="button-icon button-minus"></div>
+                    <input type="number" class="table-counter"/>
+                    <div class="button-icon button-plus"></div>
+                  </div>
+                  <div class="row-data">356$</div>
+                  <div class="row-data align-right">
+                    <img class="button-delete" src="/assets/images/delete-icon.png"/>
+                  </div>
+              </div>
+              <div class="table-row">
+                  <div class="row-data data-width-half align-center">
+                      <img class="row-data-img" src="/assets/images/mahogany-bed.png" alt="A mahogany bed" title="Mahogany bed" />
+                  </div>
+                  <div class="row-data">Mahogany bed</div>
+                  <div class="row-data">
+                    <div class="button-icon button-minus"></div>
+                    <input type="number" class="table-counter"/>
+                    <div class="button-icon button-plus"></div>
+                  </div>
+                  <div class="row-data">356$</div>
+                  <div class="row-data align-right">
+                    <img class="button-delete" src="/assets/images/delete-icon.png"/>
+                  </div>
+              </div>
+              <div class="table-row">
+                  <div class="row-data data-width-half align-center">
+                      <img class="row-data-img" src="/assets/images/mahogany-bed.png" alt="A mahogany bed" title="Mahogany bed" />
+                  </div>
+                  <div class="row-data">Mahogany bed</div>
+                  <div class="row-data">
+                    <div class="button-icon button-minus"></div>
+                    <input type="number" class="table-counter"/>
+                    <div class="button-icon button-plus"></div>
+                  </div>
+                  <div class="row-data">356$</div>
+                  <div class="row-data align-right">
+                    <img class="button-delete" src="/assets/images/delete-icon.png"/>
+                  </div>
+              </div>
+            </div>
+            <div class="table-footer"></div>
+              <div class="table-row">
+                <div class="row-data align-right">
+                  <span class="checkout-table-total">
+                    Total: <span class="total-price">$1302</span>
+                  </span>
+                </div>
+              </div>
+          </div>
+
+          <div class="checkout-table-buttons align-right">
+            <button class="button">Buy</button>
+          </div>
+      </section>
+  </div>
+</main>
