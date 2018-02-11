@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CentricExpress.DataAccess.Configurations.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace CentricExpress
+namespace CentricExpress.WebApi
 {
     public class Startup
     {
@@ -24,6 +19,7 @@ namespace CentricExpress
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDataAccess(Configuration.GetConnectionString("DefaultConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
