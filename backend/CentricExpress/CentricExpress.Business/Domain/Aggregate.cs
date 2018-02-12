@@ -2,8 +2,8 @@
 
 namespace CentricExpress.Business.Domain
 {
-    public interface IAggregate
+    public abstract class Aggregate
     {
-        Guid Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

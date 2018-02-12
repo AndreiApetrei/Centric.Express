@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using CentricExpress.Business.Domain;
 
 namespace CentricExpress.Business.Repositories
 {
-    public interface IRepository<T> where T : IAggregate
+    public interface IRepository<T> where T : Aggregate
     {
-        ICollection<T> Get();
+        IEnumerable<T> Get(Expression<Func<T, bool>> predicate);
+
+        IEnumerable<T> Get();
 
         T GetById(Guid id);
 
@@ -15,6 +17,8 @@ namespace CentricExpress.Business.Repositories
 
         void Update(T entity);
 
-        void Delete(Guid id);
+        void Remove(Guid id);
+
+        void SaveChanges();
     }
 }

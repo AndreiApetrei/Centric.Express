@@ -1,4 +1,5 @@
-﻿using CentricExpress.DataAccess.Configurations.IoC;
+﻿using CentricExpress.DataAccess;
+using CentricExpress.DataAccess.DatabaseInitializers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +20,11 @@ namespace CentricExpress.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDataAccess(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddIoc(Configuration.GetConnectionString("DefaultConnection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AppDbContext appDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -31,6 +32,9 @@ namespace CentricExpress.WebApi
             }
 
             app.UseMvc();
+
+            //TODO: add following line only after the database is created
+            //DatabaseInitializer.Seed(appDbContext);
         }
     }
 }

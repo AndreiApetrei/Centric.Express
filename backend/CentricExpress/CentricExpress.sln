@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentricExpress.WebApi", "CentricExpress\CentricExpress.WebApi.csproj", "{7415D805-4F64-4D49-AEC4-A82F8450C7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentricExpress.Business", "CentricExpress.Business\CentricExpress.Business.csproj", "{590D56A5-5E44-4917-8F9A-196BE9070B7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentricExpress.Business", "CentricExpress.Business\CentricExpress.Business.csproj", "{590D56A5-5E44-4917-8F9A-196BE9070B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentricExpress.DataAccess", "CentricExpress.DataAccess\CentricExpress.DataAccess.csproj", "{79FDF611-A14D-426F-8632-216FBBB15CA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentricExpress.DataAccess", "CentricExpress.DataAccess\CentricExpress.DataAccess.csproj", "{79FDF611-A14D-426F-8632-216FBBB15CA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentricExpress.Business.Tests", "CentricExpress.Business.Tests\CentricExpress.Business.Tests.csproj", "{901ED863-492B-4574-BDD0-9421DAEE5665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentricExpress.Business.Tests", "CentricExpress.Business.Tests\CentricExpress.Business.Tests.csproj", "{901ED863-492B-4574-BDD0-9421DAEE5665}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F113C9A7-D564-447E-AC0A-C98E814E8398}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

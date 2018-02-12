@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using CentricExpress.Business.DTOs;
 
 namespace CentricExpress.Business.Handlers
 {
-    interface IItemHandler
+    public interface IItemHandler
     {
+        IEnumerable<ItemDetailsDto> Get();
     }
 }

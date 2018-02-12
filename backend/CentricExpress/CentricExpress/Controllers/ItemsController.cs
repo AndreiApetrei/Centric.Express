@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using CentricExpress.Business.DTOs;
+using CentricExpress.Business.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CentricExpress.WebApi.Controllers
@@ -11,11 +9,18 @@ namespace CentricExpress.WebApi.Controllers
     [Route("api/items")]
     public class ItemsController : Controller
     {
+        private readonly IItemHandler _itemHandler;
+
+        public ItemsController(IItemHandler itemHandler)
+        {
+            _itemHandler = itemHandler;
+        }
+
         // GET: api/Item
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<ItemDetailsDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _itemHandler.Get();
         }
 
         // GET: api/Item/5
