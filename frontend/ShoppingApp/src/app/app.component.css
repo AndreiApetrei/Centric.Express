@@ -1,0 +1,176 @@
+:host {
+  display: block;
+}
+
+input {
+  padding-left: 4px;
+  border: 1px solid #E9E9E9;
+  border-radius: 4px;
+  outline: none;
+  background-color: #FAFAFA;
+  font-family: 'Open Sans';
+  font-size: 16px;
+  color: #686868;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.spacer {
+  margin: 50px 0;
+}
+
+.spacer-top {
+  margin-top: 50px;
+}
+
+.spacer-bottom {
+  margin-bottom: 50px;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-family: 'Open Sans';
+  font-weight: lighter;
+  font-size: 24px;
+  color: #454545;
+}
+
+
+
+.button-icon {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.button-minus:before,
+.button-plus:before,
+.button-plus:after {
+  background-color: #007734;
+}
+
+.button {
+  padding: 8px 44px;
+  border: none;
+  border-radius: 34px;
+  outline: none;
+  text-transform: capitalize;
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: #009036;
+  cursor: pointer
+}
+
+
+
+
+
+.checkout-table {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .09);
+  background-color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.checkout-table-total {
+  display: flex;
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #007734;
+}
+
+.total-price {
+  display: block;
+  margin-left: 24px;
+  font-weight: normal;
+  color: #686868;
+}
+
+.checkout-table-buttons  {
+
+}
+
+.button-delete {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.table-header,
+.table-body,
+.table-footer {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #454545;
+}
+
+.table-body {
+  color: #686868;
+  text-transform: none;
+}
+
+.table-row {
+  display: flex;
+  width: 100%;
+  padding: 16px 0;
+  border-bottom: 1px solid #E5E5E5;
+  align-items: center;
+}
+
+.row-data {
+  display: flex;
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.row-data-img {
+  width: 50px;
+  height: 50px;
+}
+
+.row-data > * + * {
+  margin-left: 4px;
+}
+
+.table-counter {
+  box-sizing: border-box;
+  width: 75px;
+  height: 32px;
+  -webkit-appearance: none;
+}
+
+.data-width-half {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.align-left {
+  display: flex;
+  justify-content: flex-start;
+}

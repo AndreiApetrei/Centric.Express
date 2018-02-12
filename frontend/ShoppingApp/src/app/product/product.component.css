@@ -1,0 +1,73 @@
+.item-card {
+  /* height: 180px; */
+  /* padding: 8px 16px; */
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .09);
+  background-color: #ffffff;
+  font-family: 'Open Sans';
+}
+
+.item-card-title {
+  padding: 8px 16px;
+  font-family: inherit;
+  font-weight: normal;
+  text-align: center;
+  font-size: 20px;
+  color: #454545;
+}
+
+.item-card-img {
+  display: block;
+  /* width: 100px; */
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 50px;
+  padding-bottom: 8px;
+}
+
+.item-card-price {
+  display: block;
+  padding: 0 8px 8px;
+  font-family: inherit;
+  font-size: 16px;
+  color: #BCBCBC;
+}
+
+.item-card-button {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  transform: translateY(50%);
+}
+
+.floating-button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  background-color: #009036;
+  cursor: pointer;
+}
+
+.floating-button:before,
+.floating-button:after,
+.button-minus:before,
+.button-plus:before,
+.button-plus:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+}
+
+.floating-button:after,
+.button-plus:after {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
