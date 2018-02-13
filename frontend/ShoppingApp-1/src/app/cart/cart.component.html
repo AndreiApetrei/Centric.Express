@@ -1,0 +1,44 @@
+<section class="items-checkout spacer">
+  <h2 class="title">My Cart</h2>
+
+  <div class="table checkout-table">
+    <div class="table-header">
+      <div class="table-row">
+        <div class="row-data data-width-half"></div>
+        <div class="row-data">Product name</div>
+        <div class="row-data">Quantity</div>
+        <div class="row-data">Price</div>
+        <div class="row-data"></div>
+      </div>
+    </div>
+    <div class="table-body">
+      <div class="table-row" *ngFor="let prod of cartProd">
+          <div class="row-data data-width-half align-center">
+              <img class="row-data-img" [src]="prod.image" alt="A mahogany bed" title="Mahogany bed" />
+          </div>
+          <div class="row-data">{{prod.title}}</div>
+          <div class="row-data">
+            <div class="button-icon button-minus"></div>
+            <input type="number" class="table-counter" [(ngModel)] = "prod.quantity"/>
+            <div class="button-icon button-plus"></div>
+          </div>
+          <div class="row-data">{{prod.price}}$</div>
+          <div class="row-data align-right">
+            <img class="button-delete" src="assets/images/delete-icon.png"/>
+          </div>
+      </div>
+    </div>
+    <div class="table-footer"></div>
+      <div class="table-row">
+        <div class="row-data align-right">
+          <span class="checkout-table-total">
+            Total: <span class="total-price">$1302</span>
+          </span>
+        </div>
+      </div>
+  </div>
+
+  <div class="checkout-table-buttons align-right">
+    <button class="button">Buy</button>
+  </div>
+</section>
