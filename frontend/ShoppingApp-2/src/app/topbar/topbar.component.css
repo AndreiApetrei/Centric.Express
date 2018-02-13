@@ -1,0 +1,38 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans';
+  font-weight: normal;
+  font-size: 18px;
+  color: #454545;
+}
+
+.user-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+.user-picture img {
+  width: inherit;
+  height: inherit;
+  border-radius: 100%;
+}
+
+.user-name {
+  margin-left: 16px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

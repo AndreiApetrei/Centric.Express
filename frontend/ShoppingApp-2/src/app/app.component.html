@@ -1,0 +1,17 @@
+<app-topbar></app-topbar>
+
+<main class="app-main">
+  <div class="container">
+    <section class="items-list spacer-top">
+      <h2 class="title">Product List</h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-2" *ngFor="let product of products">
+            <app-product [product]="product" (addToCart)="addToCart($event)"></app-product>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-cart></app-cart>
+  </div>
+</main>
