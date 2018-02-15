@@ -130,6 +130,10 @@ input {
     margin-left: 16px;
 }
 
+.user-name .name {
+    font-weight: 600;
+  }
+
 .item-card {
     /* height: 180px; */
     /* padding: 8px 16px; */
@@ -195,10 +199,6 @@ input {
     margin-left: 24px;
     font-weight: normal;
     color: #686868;
-}
-
-.checkout-table-buttons  {
-
 }
 
 .button-delete {
