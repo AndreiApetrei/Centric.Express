@@ -11,7 +11,7 @@ using System;
 namespace CentricExpress.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180211131347_InitialCreate")]
+    [Migration("20180215160938_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,7 +82,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                     b.Property<Guid>("ItemId");
 
-                    b.Property<Guid>("OrderId");
+                    b.Property<Guid?>("OrderId");
 
                     b.Property<double>("Price");
 
@@ -108,12 +108,12 @@ namespace CentricExpress.DataAccess.Migrations
 
             modelBuilder.Entity("CentricExpress.Business.Domain.OrderLine", b =>
                 {
-                    b.HasOne("CentricExpress.Business.Domain.Item", "Item")
+                    b.HasOne("CentricExpress.Business.Domain.Item")
                         .WithOne("OrderLine")
                         .HasForeignKey("CentricExpress.Business.Domain.OrderLine", "ItemId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("CentricExpress.Business.Domain.Order", "Order")
+                    b.HasOne("CentricExpress.Business.Domain.Order")
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict);

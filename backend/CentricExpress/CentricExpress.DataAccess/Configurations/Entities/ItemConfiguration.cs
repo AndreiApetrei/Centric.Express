@@ -15,9 +15,9 @@ namespace CentricExpress.DataAccess.Configurations.Entities
             builder.Property(i => i.Description).IsRequired().HasMaxLength(3000);
 
             builder.HasOne(i => i.OrderLine)
-                .WithOne(ol => ol.Item)
+                .WithOne()
                 .HasForeignKey<OrderLine>(ol => ol.ItemId)
-                .OnDelete(DeleteBehavior.Restrict); ;
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

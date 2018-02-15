@@ -19,8 +19,7 @@ namespace CentricExpress.DataAccess.Configurations.Entities
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(o => o.OrderLines)
-                .WithOne(ol => ol.Order)
-                .HasForeignKey(ol => ol.OrderId)
+                .WithOne()
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

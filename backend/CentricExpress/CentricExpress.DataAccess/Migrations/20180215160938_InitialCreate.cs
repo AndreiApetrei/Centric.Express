@@ -60,7 +60,7 @@ namespace CentricExpress.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     ItemId = table.Column<Guid>(nullable: false),
-                    OrderId = table.Column<Guid>(nullable: false),
+                    OrderId = table.Column<Guid>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     Quantity = table.Column<int>(nullable: false)
                 },
