@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title></title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:400,700,900" rel="stylesheet">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Front-end (HTML/CSS)</h1>
+					<h4>Centric Romania - 2018</h4>
+					<div class="shrink">
+						<img src="img/centric-logo.png">
+					</div>
+				</section>
+				<section>
+					<h2>Agenda</h2>
+					<h4 class="fragment" >What is HTML</h4>
+					<h4 class="fragment" >Some old HTML elements</h4>
+					<h4 class="fragment" >Tag, Attributes, Elements</h4>
+					<h4 class="fragment" >Some new HTML5 elements</h4>
+					<h4 class="fragment" >What is CSS</h4>
+					<h4 class="fragment" >Basic CSS selectors</h4>
+					<h4 class="fragment" >“Advanced” CSS selectors</h4>
+					<h4 class="fragment" >Pseudo elements</h4>
+					<h4 class="fragment" >The future of HTML/CSS</h4>
+				</section>
+
+				<section>
+					<h2>What is HTML</h2>
+						<p>Hypertext Markup Language, a standardized system for tagging text files to achieve font, colour, graphic, and hyperlink effects on World Wide Web pages.
+						</p>
+						<p style="font-weight: 700;" >Easier said, html is the backbone of everything you see on the web(facebook, youtube, etc)</p>
+				</section>
+
+				<section>
+					<h2>Some old HTML elements</h2>
+				</section>
+				
+				<section>
+					<h3>Headings</h3>
+					<p>< h1 > < /h1 ></p>
+					<p>< h2 > < /h2 ></p>
+					<p>...</p>
+					<p>< h3 > < /h3 ></p>
+				</section>
+				<section>
+					<img src="img/headings.png">
+				</section>
+				<section>
+					<h3>Paragraphs</h3>
+					<p>< p > < /p ></p>
+				</section>
+				<section>
+					<img src="img/paragraphs.png">
+				</section>
+				<section>
+					<h3>Images</h3>
+					<p>< img/ ></p>
+				</section>
+				<section>
+					<img src="img/images.png">
+				</section>
+				<section>
+					<h3>Tables(aka the devil)</h3>
+					<p>Short story about tables</p>
+				</section>
+				<section>
+					<img src="img/tables.png">
+				</section>
+
+				<section>
+					<h2>Tag, Attributes, Elements</h2>
+				</section>
+
+				<section>
+					<h2>Some new HTML5 elements</h2>
+				</section>
+				<section>
+					<h3>What is CSS</h3>
+					<p>CSS stands for Cascading Style Sheets. CSS describes how HTML elements are to be displayed on screen, paper, or in other media. CSS saves a lot of work. It can control the layout of multiple web pages all at once.</p>
+					<a href="http://www.csszengarden.com/" target="_blank" >http://www.csszengarden.com/</a>
+				</section>
+				<section>
+					<h3>Basic CSS selectors</h3>
+					<img src="img/css-syntax.png">
+				</section>
+				<section>
+					<h3>Advanced CSS selectors</h3>
+				</section>
+				<section>
+					<h3>Pseudo-elements</h3>
+				</section>
+				<section>
+					<h3>The future</h3>
+				</section>
+				
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

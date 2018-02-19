@@ -1,0 +1,233 @@
+
+
+*:focus{
+  outline: none;
+}
+
+.reveal section img{
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6{
+  font-family: 'Poppins', sans-serif;
+}
+
+.reveal h1{
+  background: -webkit-linear-gradient(#009037, #7AB51D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    line-height: normal;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 80px;
+    color: #009037;
+}
+
+.reveal h2{
+    background: -webkit-linear-gradient(#009037, #7AB51D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #009037;
+}
+
+.reveal h3{
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #868686;
+}
+
+.reveal h4{
+    font-size: 25px;
+    color: #444;
+    line-height: normal;
+    letter-spacing: 3px;
+    font-family: "Poppins";
+    font-weight: 400;
+    margin: 0;
+    text-transform: none;
+}
+
+.reveal h5{
+  font-size: 18px;
+  margin: 5px 0;
+  text-transform: none;
+}
+
+.shrink{
+  width:15%;
+  margin:0 auto!important;
+}
+
+.user{
+  width:30%;
+  display: inline-block;
+  line-height: 0!important;
+  margin: 20px 0!important;
+}
+
+.user .pic {
+  width:100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+
+.user .pic img{
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+}
+
+.user span{
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 9px 0px;
+  border-radius: 5px;
+  line-height: normal;
+}
+
+.red-bg{
+  background-color:#c0392b;
+}
+
+.blue-bg{
+  background-color: #2980b9;
+}
+
+.green-bg{
+  background-color:#27ae60;
+}
+
+.orange-bg{
+  background-color: #d35400;
+}
+
+#team-roles h4{
+  letter-spacing: 0;
+}
+
+#events .action-box{
+    width: 400px;
+    height: 250px;
+    background: #009037;
+    background: -moz-linear-gradient(-45deg, #009037 0%, #7ab51d 100%);
+    background: -webkit-linear-gradient(-45deg, #009037 0%,#7ab51d 100%);
+    background: linear-gradient(135deg, #009037 0%,#7ab51d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009037', endColorstr='#7ab51d',GradientType=1 );
+}
+
+#events .action-box img{
+  opacity: 0.5;
+}
+
+.action-box{
+	width: 100%;
+    height: 450px;
+    background: #000;
+    margin: 10px 15px!important;
+    display: inline-block;
+    background-size: cover;
+    position: relative;
+    transition: all 0.4s ease-out;
+    box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.44);
+    overflow: hidden;
+    color: white;
+}
+
+.action-box img{
+  max-height: none;
+  max-width: none;
+  width: 100%;
+  margin: 0!important;
+  transition: all 0.4s ease-out;
+}
+
+#projects .action-box img{
+  opacity: 0.5;
+}
+
+#portfolio h3{
+  margin:50px 0 0 0;
+}
+
+.action-box h4{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: 700;
+}
+
+
+#projects h4{
+	text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 35px;
+}
+
+#projects .content-box{
+  margin: 90px auto 0!important;
+}
+
+.team-members {
+    position: absolute;
+    top: -20px;
+    right: 0;
+}
+
+.team-members .pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px!important;
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 5px;
+    border: 3px solid #fff;
+}
+
+.content-box{
+	position: relative;
+	width: 90%;
+	margin-top: 20px auto !important;
+}
+
+.team-members .pic img{
+	width: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+}
+
+#whatwhat h2{
+	font-size: 55px;
+}
+
+#whatwhat .action-box img{
+	opacity: 1;
+}
+.resize-gif{
+  background: #fff;
+  box-shadow: none;
+}
+.resize-gif img{
+  height: 100%;
+  width: auto;
+}
+
+.large-height{
+  height:540px;
+}
+
+
+p{
+  font-size: 30px!important;
+}
