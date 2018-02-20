@@ -1,2 +1,0 @@
-1. From package manager console run the following command for creating the database: update-database
-2. After stept 1, on Startup.cs uncomment the line 37 for adding some items into the database. Run again from package manager console: update-database
