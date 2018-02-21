@@ -5,7 +5,7 @@
 1. Get list of items (Catalog)
 1. CRUD Items - Daniel 
 1. Item Pictures - Alex
-1. Item validation
+1. Item validation + Tests - Francesca
 
 On Branch
 
