@@ -6,6 +6,7 @@
 1. CRUD Items - Daniel 
 1. Item Pictures - Alex
 1. Item validation + Tests - Francesca
+1. Create Postman Daniel 
 
 On Branch
 
