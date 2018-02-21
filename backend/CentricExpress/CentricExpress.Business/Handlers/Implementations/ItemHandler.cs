@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
@@ -15,15 +16,24 @@ namespace CentricExpress.Business.Handlers.Implementations
             _itemRepository = itemRepository;
         }
 
-        public IEnumerable<ItemDetailsDto> Get()
+        public IEnumerable<ItemDto> Get()
         {
             return _itemRepository.Get()?
-                .Select(i => new ItemDetailsDto
+                .Select(i => new ItemDto
                 {
                     Id = i.Id,
                     Description = i.Description,
                     Price = i.Price
                 });
+        }
+
+        public ItemDetailsDto Get(string id)
+        {
+            var guid = Guid.Parse(id);
+
+            var item = _itemRepository.GetById(guid);
+
+            return ItemDetailsDto.MapFromModel(item);
         }
     }
 }

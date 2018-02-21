@@ -5,6 +5,8 @@ namespace CentricExpress.Business.Handlers
 {
     public interface IItemHandler
     {
-        IEnumerable<ItemDetailsDto> Get();
+        IEnumerable<ItemDto> Get();
+
+        ItemDetailsDto Get(string id);
     }
 }

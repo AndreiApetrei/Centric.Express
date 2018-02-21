@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CentricExpress.Business.Domain;
+using System;
 
 namespace CentricExpress.Business.DTOs
 {
@@ -11,5 +12,16 @@ namespace CentricExpress.Business.DTOs
         public double Price { get; set; }
 
         public string PictureUrl { get; set; }
+
+        public static ItemDetailsDto MapFromModel(Item item)
+        {
+            return item != null ?
+                new ItemDetailsDto
+                {
+                    Id = item.Id,
+                    Description = item.Description,
+                    Price = item.Price
+                } : null;
+        }
     }
 }
