@@ -3,7 +3,7 @@ using CentricExpress.Business.DTOs;
 
 namespace CentricExpress.Business.Handlers
 {
-    public interface IItemHandler
+    public interface IItemService
     {
         IEnumerable<ItemDto> Get();
 

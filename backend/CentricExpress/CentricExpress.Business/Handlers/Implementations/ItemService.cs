@@ -7,11 +7,11 @@ using CentricExpress.Business.Repositories;
 
 namespace CentricExpress.Business.Handlers.Implementations
 {
-    public class ItemHandler : IItemHandler
+    public class ItemService : IItemService
     {
         private readonly IRepository<Item> _itemRepository;
 
-        public ItemHandler(IRepository<Item> itemRepository)
+        public ItemService(IRepository<Item> itemRepository)
         {
             _itemRepository = itemRepository;
         }
