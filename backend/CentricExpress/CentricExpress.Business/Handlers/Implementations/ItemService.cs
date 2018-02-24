@@ -23,7 +23,7 @@ namespace CentricExpress.Business.Handlers.Implementations
                 {
                     Id = i.Id,
                     Description = i.Description,
-                    Price = i.Price
+                    Price = i.Price 
                 });
         }
 

@@ -13,11 +13,6 @@ namespace CentricExpress.WebApi
         {
             services.AddDataAccess(connectionString);
 
-            services.AddTransient<IRepository<Customer>, Repository<Customer>>();
-            services.AddTransient<IRepository<Item>, Repository<Item>>();
-            services.AddTransient<IRepository<OrderLine>, Repository<OrderLine>>();
-            services.AddTransient<IRepository<Order>, Repository<Order>>();
-
             services.AddBusiness();
         }
     }

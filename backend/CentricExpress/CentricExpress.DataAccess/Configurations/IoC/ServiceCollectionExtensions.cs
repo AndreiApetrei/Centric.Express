@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CentricExpress.Business.Domain;
+using CentricExpress.Business.Repositories;
+using CentricExpress.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CentricExpress.DataAccess.Configurations.IoC
@@ -8,6 +11,11 @@ namespace CentricExpress.DataAccess.Configurations.IoC
         public static void AddDataAccess(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+            
+            services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            services.AddTransient<IRepository<Item>, Repository<Item>>();
+            services.AddTransient<IRepository<OrderLine>, Repository<OrderLine>>();
+            services.AddTransient<IRepository<Order>, Repository<Order>>();
         }
     }
 }

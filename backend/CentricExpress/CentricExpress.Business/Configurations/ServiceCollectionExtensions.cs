@@ -8,7 +8,7 @@ namespace CentricExpress.Business.Configurations
     {
         public static void AddBusiness(this IServiceCollection services)
         {
-            services.AddTransient<IItemHandler, ItemHandler>();
+            services.AddTransient<IItemService, ItemService>();
         }
     }
 }

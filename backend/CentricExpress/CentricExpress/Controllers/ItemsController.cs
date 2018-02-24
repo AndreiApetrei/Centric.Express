@@ -10,23 +10,23 @@ namespace CentricExpress.WebApi.Controllers
     [Route("api/items")]
     public class ItemsController : Controller
     {
-        private readonly IItemHandler _itemHandler;
+        private readonly IItemService itemService;
 
-        public ItemsController(IItemHandler itemHandler)
+        public ItemsController(IItemService itemService)
         {
-            _itemHandler = itemHandler;
+            this.itemService = itemService;
         }
 
         [HttpGet]
         public IEnumerable<ItemDto> Get()
         {
-            return _itemHandler.Get();
+            return itemService.Get();
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-            var itemDetails = _itemHandler.Get(id);
+            var itemDetails = itemService.Get(id);
 
             if (itemDetails == null)
             {
