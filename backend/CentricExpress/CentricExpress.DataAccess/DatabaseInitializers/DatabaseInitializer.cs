@@ -10,6 +10,7 @@ namespace CentricExpress.DataAccess.DatabaseInitializers
             //context.Database.EnsureCreated(); 
 
             ItemDatabaseInitializer.Seed(context);
+            CustomerDatabaseInitializer.Seed(context);
         }
     }
 }

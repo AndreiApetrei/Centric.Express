@@ -4,13 +4,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using CentricExpress.Business.Domain;
 using CentricExpress.Business.Repositories;
+using CentricExpress.Business.Services;
 using Microsoft.Extensions.Logging;
 
 namespace CentricExpress.DataAccess.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Aggregate
     {
-        private readonly AppDbContext _appDbContext;
+        protected readonly AppDbContext _appDbContext;
         private readonly ILogger<Repository<T>> _logger;
 
         public Repository(AppDbContext appDbContext, ILogger<Repository<T>> logger)
@@ -56,7 +57,7 @@ namespace CentricExpress.DataAccess.Repositories
             ExecuteWithLogging(() => _appDbContext.SaveChanges());
         }
 
-        private TResult ExecuteWithLogging<TResult>(Func<TResult> func)
+        protected TResult ExecuteWithLogging<TResult>(Func<TResult> func)
         {
             try
             {

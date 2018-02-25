@@ -11,9 +11,10 @@ using System;
 namespace CentricExpress.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180225141159_AddCurrencyToItem")]
+    partial class AddCurrencyToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,6 +80,8 @@ namespace CentricExpress.DataAccess.Migrations
 
                     b.Property<Guid?>("OrderId");
 
+                    b.Property<double>("Price");
+
                     b.Property<int>("Quantity");
 
                     b.HasKey("Id");
@@ -90,7 +93,7 @@ namespace CentricExpress.DataAccess.Migrations
 
             modelBuilder.Entity("CentricExpress.Business.Domain.Item", b =>
                 {
-                    b.OwnsOne("CentricExpress.Business.Domain.Money", "Price", b1 =>
+                    b.OwnsOne("CentricExpress.Business.Domain.Amount", "Price", b1 =>
                         {
                             b1.Property<Guid>("ItemId");
 
@@ -103,7 +106,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                             b1.HasOne("CentricExpress.Business.Domain.Item")
                                 .WithOne("Price")
-                                .HasForeignKey("CentricExpress.Business.Domain.Money", "ItemId")
+                                .HasForeignKey("CentricExpress.Business.Domain.Amount", "ItemId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
                 });
@@ -114,23 +117,6 @@ namespace CentricExpress.DataAccess.Migrations
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.OwnsOne("CentricExpress.Business.Domain.Money", "Price", b1 =>
-                        {
-                            b1.Property<Guid?>("OrderLineId");
-
-                            b1.Property<string>("Currency");
-
-                            b1.Property<decimal>("Value")
-                                .HasColumnName("Price");
-
-                            b1.ToTable("OrderLine");
-
-                            b1.HasOne("CentricExpress.Business.Domain.OrderLine")
-                                .WithOne("Price")
-                                .HasForeignKey("CentricExpress.Business.Domain.Money", "OrderLineId")
-                                .OnDelete(DeleteBehavior.Cascade);
-                        });
                 });
 #pragma warning restore 612, 618
         }

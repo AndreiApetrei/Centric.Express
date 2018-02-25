@@ -9,7 +9,7 @@ namespace CentricExpress.Business.DTOs
 
         public string Description { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public string PictureUrl { get; set; }
 
@@ -20,7 +20,7 @@ namespace CentricExpress.Business.DTOs
                 {
                     Id = item.Id,
                     Description = item.Description,
-                    Price = item.Price
+                    Price = item.Price.Value
                 } : null;
         }
     }

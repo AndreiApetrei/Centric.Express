@@ -10,7 +10,13 @@ namespace CentricExpress.DataAccess.Configurations.Entities
         {
             builder.ToTable("OrderLine");
             builder.HasKey(ol => ol.Id);
-            builder.Property(ol => ol.Price).IsRequired();
+            
+            builder.OwnsOne(i => i.Price, p =>
+            {
+                p.Property(amount => amount.Currency);
+                p.Property(amount => amount.Value).HasColumnName("Price");
+            });
+            
             builder.Property(ol => ol.Quantity).IsRequired();
             builder.Property(ol => ol.ItemId).IsRequired();
         }

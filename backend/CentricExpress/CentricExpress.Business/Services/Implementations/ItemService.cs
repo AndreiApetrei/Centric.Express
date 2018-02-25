@@ -23,7 +23,7 @@ namespace CentricExpress.Business.Services.Implementations
                 {
                     Id = i.Id,
                     Description = i.Description,
-                    Price = i.Price 
+                    Price = i.Price.Value 
                 });
         }
 
@@ -34,6 +34,10 @@ namespace CentricExpress.Business.Services.Implementations
             var item = _itemRepository.GetById(guid);
 
             return ItemDetailsDto.MapFromModel(item);
+        }
+
+        public void GetPrices(IEnumerable<Guid> @select)
+        {
         }
     }
 }

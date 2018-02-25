@@ -19,31 +19,31 @@ namespace CentricExpress.DataAccess.DatabaseInitializers.EntitiesInitializers
                 {
                     Id = ItemId.Item1,
                     Description = "Item 1",
-                    Price = 38.9
+                    Price = new Money(38.9m, "RON")
                 },
                 new Item
                 {
                 Id = ItemId.Item2,
                 Description = "Item 2",
-                Price = 42.5
+                Price = new Money(42.5m, "RON")
                 },
                 new Item
                 {
                     Id = ItemId.Item3,
                     Description = "Item 3",
-                    Price = 104.3
+                    Price = new Money(104.3m, "RON")
                 },
                 new Item
                 {
                     Id = ItemId.Item4,
                     Description = "Item 4",
-                    Price = 55.2
+                    Price = new Money(55.2m, "RON")
                 },
                 new Item
                 {
                     Id = ItemId.Item5,
                     Description = "Item 5",
-                    Price = 12.7
+                    Price = new Money(12.7m, "RON")
                 }
             };
 
