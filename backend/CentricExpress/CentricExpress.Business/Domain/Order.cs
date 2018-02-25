@@ -7,7 +7,6 @@ namespace CentricExpress.Business.Domain
     {
         public DateTime Date { get; set; }
         public Guid CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
     }
 }

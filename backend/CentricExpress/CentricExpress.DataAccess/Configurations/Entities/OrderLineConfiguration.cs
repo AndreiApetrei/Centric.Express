@@ -12,6 +12,7 @@ namespace CentricExpress.DataAccess.Configurations.Entities
             builder.HasKey(ol => ol.Id);
             builder.Property(ol => ol.Price).IsRequired();
             builder.Property(ol => ol.Quantity).IsRequired();
+            builder.Property(ol => ol.ItemId).IsRequired();
         }
     }
 }

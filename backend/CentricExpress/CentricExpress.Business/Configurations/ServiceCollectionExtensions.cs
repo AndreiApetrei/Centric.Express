@@ -1,5 +1,5 @@
-﻿using CentricExpress.Business.Handlers;
-using CentricExpress.Business.Handlers.Implementations;
+﻿using CentricExpress.Business.Services;
+using CentricExpress.Business.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CentricExpress.Business.Configurations

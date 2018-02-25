@@ -5,7 +5,7 @@ using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
-namespace CentricExpress.Business.Handlers.Implementations
+namespace CentricExpress.Business.Services.Implementations
 {
     public class ItemService : IItemService
     {
