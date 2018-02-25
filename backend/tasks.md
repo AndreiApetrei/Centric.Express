@@ -3,10 +3,10 @@
 1. Item seed data (in code1)
 1. Item seed data (in EF)
 1. Get list of items (Catalog)
-1. CRUD Items - Daniel 
+1. CRUD Items - Daniel
 1. Item Pictures - Alex
 1. Item validation + Tests - Francesca
-1. Create Postman Daniel 
+1. Create Postman Daniel
 
 On Branch
 
@@ -20,10 +20,8 @@ On Branch
 
 1. Add swagger - Francesca
 
-# Nice to have
+## Nice to have
 
 1. Pagination
 1. Authentication and Authorization
 1. Domain Events
-
-
