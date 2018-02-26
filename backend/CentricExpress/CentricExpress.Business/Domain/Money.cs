@@ -12,6 +12,9 @@
             Currency = currency;
             Value = value;
         }
+        
+        public string Currency { get; private set;}
+        public decimal Value { get; private set; }
 
         protected bool Equals(Money other)
         {
@@ -33,8 +36,5 @@
                 return ((Currency != null ? Currency.GetHashCode() : 0) * 397) ^ Value.GetHashCode();
             }
         }
-
-        public string Currency { get; private set;}
-        public decimal Value { get; private set; }
     }
 }
