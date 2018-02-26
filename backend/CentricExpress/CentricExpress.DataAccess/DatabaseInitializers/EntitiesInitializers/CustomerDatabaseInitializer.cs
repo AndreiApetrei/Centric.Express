@@ -17,7 +17,7 @@ namespace CentricExpress.DataAccess.DatabaseInitializers.EntitiesInitializers
             var items = new List<Customer> {
                 new Customer()
                 {
-                    Id = Guid.NewGuid(), Age = 35, FirstName = "Dummy", Surname = "User"
+                    Age = 35, FirstName = "Dummy", Surname = "User"
                 },
             };
 

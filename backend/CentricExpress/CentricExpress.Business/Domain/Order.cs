@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CentricExpress.Business.Domain
 {
@@ -8,10 +9,11 @@ namespace CentricExpress.Business.Domain
         public Order(Guid customerId, IEnumerable<OrderLine> orderLines)
         {
             CustomerId = customerId;
+            OrderLines = orderLines.ToList();
         }
 
         public DateTime Date { get; set; }
         public Guid CustomerId { get; private set; }
-        public ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; private set; }
     }
 }

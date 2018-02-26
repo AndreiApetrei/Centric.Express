@@ -6,6 +6,10 @@
 
 Note: if update does not work, probably you installted SQL Express differently. Check appsettings.json & update the connection string according to your local settings.
 
+## Swagger
+http://localhost:50755/swagger/
+
 ## Links
 
 * `.NET Watch` - https://docs.microsoft.com/en-us/aspnet/core/tutorials/dotnet-watch
+

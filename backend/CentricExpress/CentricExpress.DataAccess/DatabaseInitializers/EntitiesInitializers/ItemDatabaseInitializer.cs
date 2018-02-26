@@ -15,33 +15,28 @@ namespace CentricExpress.DataAccess.DatabaseInitializers.EntitiesInitializers
             }
 
             var items = new List<Item> {
-                new Item
+                new Item (ItemId.Item1)
                 {
-                    Id = ItemId.Item1,
                     Description = "Item 1",
                     Price = new Money(38.9m, "RON")
                 },
-                new Item
+                new Item (ItemId.Item2)
                 {
-                Id = ItemId.Item2,
                 Description = "Item 2",
                 Price = new Money(42.5m, "RON")
                 },
-                new Item
+                new Item (ItemId.Item3)
                 {
-                    Id = ItemId.Item3,
                     Description = "Item 3",
                     Price = new Money(104.3m, "RON")
                 },
-                new Item
+                new Item (ItemId.Item4)
                 {
-                    Id = ItemId.Item4,
                     Description = "Item 4",
                     Price = new Money(55.2m, "RON")
                 },
-                new Item
+                new Item (ItemId.Item5)
                 {
-                    Id = ItemId.Item5,
                     Description = "Item 5",
                     Price = new Money(12.7m, "RON")
                 }
