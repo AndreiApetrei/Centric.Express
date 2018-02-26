@@ -11,8 +11,8 @@ using System;
 namespace CentricExpress.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20180225145414_AddCurrencyToOrderLine")]
-    partial class AddCurrencyToOrderLine
+    [Migration("20180226062925_AddCurrency")]
+    partial class AddCurrency
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,8 +97,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                             b1.Property<string>("Currency");
 
-                            b1.Property<decimal>("Value")
-                                .HasColumnName("Price");
+                            b1.Property<decimal>("Value");
 
                             b1.ToTable("Item");
 
@@ -122,8 +121,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                             b1.Property<string>("Currency");
 
-                            b1.Property<decimal>("Value")
-                                .HasColumnName("Price");
+                            b1.Property<decimal>("Value");
 
                             b1.ToTable("OrderLine");
 

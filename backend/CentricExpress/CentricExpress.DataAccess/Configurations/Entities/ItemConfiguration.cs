@@ -14,8 +14,8 @@ namespace CentricExpress.DataAccess.Configurations.Entities
             
             builder.OwnsOne(i => i.Price, p =>
             {
-                p.Property(amount => amount.Currency).HasColumnName("Currency");
-                p.Property(amount => amount.Value).HasColumnName("Price");
+                p.Property(amount => amount.Currency);
+                p.Property(amount => amount.Value);
             });
             
             builder.Property(i => i.Description).IsRequired().HasMaxLength(3000);

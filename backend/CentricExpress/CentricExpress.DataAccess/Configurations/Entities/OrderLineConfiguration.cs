@@ -14,7 +14,7 @@ namespace CentricExpress.DataAccess.Configurations.Entities
             builder.OwnsOne(i => i.Price, p =>
             {
                 p.Property(amount => amount.Currency);
-                p.Property(amount => amount.Value).HasColumnName("Price");
+                p.Property(amount => amount.Value);
             });
             
             builder.Property(ol => ol.Quantity).IsRequired();

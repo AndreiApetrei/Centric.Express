@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Runtime.InteropServices;
 
 namespace CentricExpress.DataAccess.Migrations
 {
@@ -29,8 +28,7 @@ namespace CentricExpress.DataAccess.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Description = table.Column<string>(maxLength: 3000, nullable: false),
                     Picture = table.Column<byte[]>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
-                    Currency = table.Column<string>(nullable: true)
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

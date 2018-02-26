@@ -96,8 +96,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                             b1.Property<string>("Currency");
 
-                            b1.Property<decimal>("Value")
-                                .HasColumnName("Price");
+                            b1.Property<decimal>("Value");
 
                             b1.ToTable("Item");
 
@@ -121,8 +120,7 @@ namespace CentricExpress.DataAccess.Migrations
 
                             b1.Property<string>("Currency");
 
-                            b1.Property<decimal>("Value")
-                                .HasColumnName("Price");
+                            b1.Property<decimal>("Value");
 
                             b1.ToTable("OrderLine");
 

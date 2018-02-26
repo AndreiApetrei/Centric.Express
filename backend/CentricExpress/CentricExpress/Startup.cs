@@ -51,7 +51,7 @@ namespace CentricExpress.WebApi
             app.UseMvc();
 
             //TODO: add following line only after the database is created
-            DatabaseInitializer.Seed(appDbContext);
+            //DatabaseInitializer.Seed(appDbContext);
         }
     }
 }
