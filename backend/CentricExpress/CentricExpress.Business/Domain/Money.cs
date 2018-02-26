@@ -2,6 +2,17 @@
 {
     public class Money
     {
+        private Money()
+        {
+            //orm
+        }
+
+        public Money(decimal value, string currency)
+        {
+            Currency = currency;
+            Value = value;
+        }
+
         protected bool Equals(Money other)
         {
             return string.Equals(Currency, other.Currency) && Value == other.Value;
@@ -21,12 +32,6 @@
             {
                 return ((Currency != null ? Currency.GetHashCode() : 0) * 397) ^ Value.GetHashCode();
             }
-        }
-
-        public Money(decimal value, string currency)
-        {
-            Currency = currency;
-            Value = value;
         }
 
         public string Currency { get; private set;}
