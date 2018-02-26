@@ -1,0 +1,62 @@
+{
+	"info": {
+		"name": "Centric express",
+		"_postman_id": "4be70846-de26-4050-b519-6d20c54c87e3",
+		"description": "http calls to Centric Express services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": \"fb5ef028-f7f4-4147-af4c-f07e6cf9d562\",\r\n  \"orderLines\": [\r\n    {\r\n      \"itemId\": \"b1e647c8-5055-4813-b0ca-26c6abea0b75\",\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:50755/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "50755",
+					"path": [
+						"api",
+						"orders"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:50755/api/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "50755",
+					"path": [
+						"api",
+						"items"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
