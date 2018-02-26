@@ -9,6 +9,8 @@ namespace CentricExpress.Business.Configurations
         public static void AddBusiness(this IServiceCollection services)
         {
             services.AddTransient<IItemService, ItemService>();
+
+            services.AddTransient<IPictureService, PictureService>();
         }
     }
 }
