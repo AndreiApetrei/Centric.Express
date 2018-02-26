@@ -16,7 +16,7 @@
         public string Currency { get; private set;}
         public decimal Value { get; private set; }
 
-        protected bool Equals(Money other)
+        private bool Equals(Money other)
         {
             return string.Equals(Currency, other.Currency) && Value == other.Value;
         }
