@@ -7,6 +7,8 @@
             //orm
         }
 
+        public static Money Zero => new Money(0, "");
+
         public Money(decimal value, string currency)
         {
             Currency = currency;
