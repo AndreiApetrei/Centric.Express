@@ -20,7 +20,7 @@ http://localhost:50755/swagger/
 ```
 {
     "description": "Cereals",
-    "pictureURL": "https://goo.gl/vb4wWi",
+    "pictureURL": "https://goo.gl/vb4wWi",qq
 }
 ```
     

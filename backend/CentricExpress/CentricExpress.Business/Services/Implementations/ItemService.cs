@@ -9,9 +9,9 @@ namespace CentricExpress.Business.Services.Implementations
 {
     public class ItemService : IItemService
     {
-        private readonly IRepository<Item> _itemRepository;
+        private readonly IItemRepository _itemRepository;
 
-        public ItemService(IRepository<Item> itemRepository)
+        public ItemService(IItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
         }
