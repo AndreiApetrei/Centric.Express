@@ -19,6 +19,8 @@ namespace CentricExpress.DataAccess
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderLine> OrderLine { get; set; }
+        
+        public DbSet<Picture> Pictures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +29,7 @@ namespace CentricExpress.DataAccess
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderLineConfiguration());
+            modelBuilder.ApplyConfiguration(new PictureConfiguration());
         }
     }
 }

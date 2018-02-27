@@ -11,6 +11,7 @@ namespace CentricExpress.DataAccess.DatabaseInitializers
 
             ItemDatabaseInitializer.Seed(context);
             CustomerDatabaseInitializer.Seed(context);
+            PictureDatabaseInitializer.Seed(context);
         }
     }
 }

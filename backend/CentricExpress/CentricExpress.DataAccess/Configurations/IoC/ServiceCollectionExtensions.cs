@@ -15,6 +15,7 @@ namespace CentricExpress.DataAccess.Configurations.IoC
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<IRepository<Order>, Repository<Order>>();
+            services.AddTransient<IRepository<Picture>, Repository<Picture>>();
         }
     }
 }

@@ -21,90 +21,106 @@ namespace CentricExpress.DataAccess.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CentricExpress.Business.Domain.Customer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Age");
+                b.Property<int>("Age");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(100);
+                b.Property<string>("FirstName")
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                b.Property<string>("Surname")
+                    .IsRequired()
+                    .HasMaxLength(50);
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Customer");
-                });
+                b.ToTable("Customer");
+            });
 
             modelBuilder.Entity("CentricExpress.Business.Domain.Item", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(3000);
+                b.Property<string>("Description")
+                    .IsRequired()
+                    .HasMaxLength(3000);
 
-                    b.Property<byte[]>("Picture");
+                b.Property<byte[]>("Picture");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Item");
-                });
+                b.ToTable("Item");
+            });
 
             modelBuilder.Entity("CentricExpress.Business.Domain.Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("CustomerId");
+                b.Property<Guid>("CustomerId");
 
-                    b.Property<DateTime>("Date");
+                b.Property<DateTime>("Date");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Order");
-                });
+                b.ToTable("Order");
+            });
 
             modelBuilder.Entity("CentricExpress.Business.Domain.OrderLine", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<Guid>("ItemId");
+
+                b.Property<Guid?>("OrderId");
+
+                b.Property<int>("Quantity");
+
+                b.HasKey("Id");
+
+                b.HasIndex("OrderId");
+
+                b.ToTable("OrderLine");
+            });
+
+
+            modelBuilder.Entity("CentricExpress.Business.Domain.Item", b =>
+            {
+                b.OwnsOne("CentricExpress.Business.Domain.Money", "Price", b1 =>
+                {
+                    b1.Property<Guid>("ItemId");
+
+                    b1.Property<string>("Currency");
+
+                    b1.Property<decimal>("Value");
+
+                    b1.ToTable("Item");
+
+                    b1.HasOne("CentricExpress.Business.Domain.Item")
+                        .WithOne("Price")
+                        .HasForeignKey("CentricExpress.Business.Domain.Money", "ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+            });
+
+        modelBuilder.Entity("CentricExpress.Business.Domain.Picture", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("ItemId");
+                    b.Property<byte[]>("Content")
+                        .IsRequired();
 
-                    b.Property<Guid?>("OrderId");
-
-                    b.Property<int>("Quantity");
+                    b.Property<string>("Description");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderLine");
-                });
-
-            modelBuilder.Entity("CentricExpress.Business.Domain.Item", b =>
-                {
-                    b.OwnsOne("CentricExpress.Business.Domain.Money", "Price", b1 =>
-                        {
-                            b1.Property<Guid>("ItemId");
-
-                            b1.Property<string>("Currency");
-
-                            b1.Property<decimal>("Value");
-
-                            b1.ToTable("Item");
-
-                            b1.HasOne("CentricExpress.Business.Domain.Item")
-                                .WithOne("Price")
-                                .HasForeignKey("CentricExpress.Business.Domain.Money", "ItemId")
-                                .OnDelete(DeleteBehavior.Cascade);
-                        });
+                    b.ToTable("Picture");
                 });
 
             modelBuilder.Entity("CentricExpress.Business.Domain.OrderLine", b =>
