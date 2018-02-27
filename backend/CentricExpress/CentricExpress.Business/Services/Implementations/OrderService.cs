@@ -4,7 +4,7 @@ using CentricExpress.Business.Repositories;
 
 namespace CentricExpress.Business.Services.Implementations
 {
-    internal class OrderService : IOrderService
+    public class OrderService : IOrderService
     {
         private readonly IItemRepository itemRepository;
         private readonly IRepository<Order> orderRepository;
