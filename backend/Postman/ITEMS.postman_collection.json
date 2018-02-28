@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ITEMS",
+		"_postman_id": "2fc8265c-9cfd-be88-dec8-f1acdc3e63b1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:58277/api/items",
+			"request": {
+				"url": "http://localhost:58277/api/items",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58277/api/items/withId",
+			"request": {
+				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b75",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
