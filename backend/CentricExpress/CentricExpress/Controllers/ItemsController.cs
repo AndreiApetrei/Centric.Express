@@ -24,8 +24,13 @@ namespace CentricExpress.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(string id)
+        public IActionResult Get(Guid id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var itemDetails = itemService.Get(id);
 
             if (itemDetails == null)
@@ -37,8 +42,9 @@ namespace CentricExpress.WebApi.Controllers
         }
         
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ItemDto item)
         {
+            // item to be added in database
         }
         
         [HttpPut("{id}")]

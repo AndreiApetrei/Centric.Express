@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CentricExpress.Business.DTOs;
 
 namespace CentricExpress.Business.Services
@@ -7,6 +8,6 @@ namespace CentricExpress.Business.Services
     {
         IEnumerable<ItemDto> Get();
 
-        ItemDetailsDto Get(string id);
+        ItemDetailsDto Get(Guid id);
     }
 }

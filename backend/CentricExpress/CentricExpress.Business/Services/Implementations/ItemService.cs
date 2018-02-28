@@ -27,11 +27,9 @@ namespace CentricExpress.Business.Services.Implementations
                 });
         }
 
-        public ItemDetailsDto Get(string id)
+        public ItemDetailsDto Get(Guid id)
         {
-            var guid = Guid.Parse(id);
-
-            var item = _itemRepository.GetById(guid);
+            var item = _itemRepository.GetById(id);
 
             return ItemDetailsDto.MapFromModel(item);
         }

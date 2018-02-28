@@ -1,5 +1,6 @@
 ﻿using CentricExpress.DataAccess;
 using CentricExpress.DataAccess.DatabaseInitializers;
+using CentricExpress.WebApi.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,7 @@ namespace CentricExpress.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseExceptionsMiddleware();
             app.UseMvc();
 
             //TODO: add following line only after the database is created
