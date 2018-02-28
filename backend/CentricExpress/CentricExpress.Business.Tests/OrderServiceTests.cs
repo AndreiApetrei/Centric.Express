@@ -27,6 +27,7 @@ namespace CentricExpress.Business.Tests
         [TestMethod]
         public void Should_create_order_with_order_line()
         {
+            Assert.IsFalse(false);
         }
     }
 }

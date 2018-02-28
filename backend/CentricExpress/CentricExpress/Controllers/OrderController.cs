@@ -11,7 +11,7 @@ namespace CentricExpress.WebApi.Controllers
     [Route("api/orders")]
     public class OrderController : Controller
     {
-        private IOrderService orderService;
+        private readonly IOrderService orderService;
 
         public OrderController(IOrderService orderService)
         {
