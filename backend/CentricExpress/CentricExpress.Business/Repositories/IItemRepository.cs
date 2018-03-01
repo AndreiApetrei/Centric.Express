@@ -6,6 +6,6 @@ namespace CentricExpress.Business.Repositories
 {
     public interface IItemRepository : IRepository<Item>
     {
-        IDictionary<Guid, Money> GetPrices(IEnumerable<Guid> @select);
+        ItemPrices GetPrices(params Guid[] itemIds);
     }
 }

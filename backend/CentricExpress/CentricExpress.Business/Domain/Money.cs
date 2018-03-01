@@ -1,4 +1,8 @@
-﻿namespace CentricExpress.Business.Domain
+﻿using System;
+using System.Net;
+using System.Runtime.CompilerServices;
+
+namespace CentricExpress.Business.Domain
 {
     public class Money
     {
@@ -7,7 +11,11 @@
             //orm
         }
 
-        public static Money Zero => new Money(0, "");
+        public static Money Zero => new Money(0, Domain.Currency.Nothing);
+
+        private Money(decimal value, Currency currency) : this(value, currency.ToString())
+        {
+        }
 
         public Money(decimal value, string currency)
         {
@@ -17,6 +25,16 @@
         
         public string Currency { get; private set;}
         public decimal Value { get; private set; }
+
+        public static Money operator *(Money money, int quantity)
+        {
+            return money.MultiplyWith(quantity);
+        }
+
+        private Money MultiplyWith(int quantity)
+        {
+            return new Money(Value * quantity, this.Currency);
+        }
 
         private bool Equals(Money other)
         {
@@ -37,6 +55,11 @@
             {
                 return ((Currency != null ? Currency.GetHashCode() : 0) * 397) ^ Value.GetHashCode();
             }
+        }
+
+        public static Money From(decimal value, Currency currency)
+        {
+            return new Money(value, currency);
         }
     }
 }

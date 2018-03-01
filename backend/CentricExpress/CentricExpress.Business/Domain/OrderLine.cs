@@ -14,7 +14,9 @@ namespace CentricExpress.Business.Domain
         public Guid Id { get; private set; }
         
         public int Quantity { get; private set; }
-        public Money Price { get; set; }
+        public Money Price { get; private set; }
         public Guid ItemId { get; private set; }
+
+        public Money Value => this.Price * Quantity;
     }
 }

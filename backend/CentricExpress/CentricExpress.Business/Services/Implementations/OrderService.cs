@@ -6,21 +6,26 @@ namespace CentricExpress.Business.Services.Implementations
 {
     public class OrderService : IOrderService
     {
-        private readonly IItemRepository itemRepository;
         private readonly IRepository<Order> orderRepository;
+        private readonly IOrderFactory orderFactory;
 
-        public OrderService(IRepository<Order> orderRepository, IItemRepository itemRepository)
+        public OrderService(IRepository<Order> orderRepository, IOrderFactory orderFactory)
         {
             this.orderRepository = orderRepository;
-            this.itemRepository = itemRepository;
+            this.orderFactory = orderFactory;
         }
 
         public void PlaceOrder(OrderDto orderDto)
         {
-            var order = orderDto.ToDomain(itemRepository.GetPrices);
+            var order = orderFactory.CreateOrder(orderDto);
             
             orderRepository.Insert(order);
             orderRepository.SaveChanges();
         }
+    }
+
+    public interface IOrderFactory
+    {
+        Order CreateOrder(OrderDto orderDto);
     }
 }

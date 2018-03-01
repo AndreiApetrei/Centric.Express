@@ -16,5 +16,17 @@ namespace CentricExpress.Business.Domain
         public DateTime Date { get; private set; }
         public Guid CustomerId { get; private set; }
         public ICollection<OrderLine> OrderLines { get; private set; }
+
+        public bool OrderlineValueIs(Guid itemId, Money value)
+        {
+            var orderLine = OrderLines.FirstOrDefault(line => line.ItemId == itemId);
+
+            if (orderLine == null)
+            {
+                return false;
+            }
+            
+            return orderLine.Value.Equals(value);
+        }
     }
 }

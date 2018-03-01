@@ -10,18 +10,55 @@ namespace CentricExpress.Business.DTOs
         public Guid CustomerId { get; set; }
         public ICollection<OrderLineDto> OrderLines { get; set; }
 
-        public Order ToDomain(Func<IEnumerable<Guid>, IDictionary<Guid, Money>> getPricesFunction)
+        public Order ToDomain(Func<Guid[], ItemPrices> getPricesFunction)
         {
-            var itemPrices = getPricesFunction(OrderLines.Select(dto => dto.ItemId));
+            var itemPrices = getPricesFunction(ItemIds);
 
-            var orderLines =
-                OrderLines.Select(dto => new OrderLine(dto.ItemId, dto.Quantity, GetItemPrice(itemPrices, dto)));
+            var orderLines = BuildDomainOrderLines(itemPrices);
             return new Order(CustomerId, orderLines);
         }
 
-        private static Money GetItemPrice(IDictionary<Guid, Money> itemPrices, OrderLineDto dto)
+        private IEnumerable<OrderLine> BuildDomainOrderLines(ItemPrices itemPrices)
         {
-            return !itemPrices.ContainsKey(dto.ItemId) ? Money.Zero : itemPrices[dto.ItemId];
+            if (OrderLines == null)
+            {
+                return new List<OrderLine>();
+            }
+            
+            var orderLines =
+                OrderLines.Select(dto => new OrderLine(dto.ItemId, dto.Quantity, itemPrices.GetPrice(dto.ItemId)));
+            return orderLines;
+        }
+
+        private Guid[] ItemIds
+        {
+            get
+            {
+                return OrderLines?.Select(dto => dto.ItemId).ToArray() ?? new Guid[0];
+            }
+        }
+
+        public OrderDto WithOrderLine(Guid itemId, int quantity)
+        {
+            if (OrderLines == null)
+            {
+                OrderLines = new List<OrderLineDto>();
+            }
+
+            OrderLines.Add(new OrderLineDto()
+            {
+                ItemId = itemId,
+                Quantity = quantity
+            });
+
+            return this;
+        }
+
+        public OrderDto WithCustomer(Guid customerId)
+        {
+            this.CustomerId = customerId;
+
+            return this;
         }
     }
 }

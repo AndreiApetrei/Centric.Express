@@ -13,11 +13,11 @@ namespace CentricExpress.DataAccess.Repositories
         {
         }
 
-        public IDictionary<Guid, Money> GetPrices(IEnumerable<Guid> itemIds)
+        public ItemPrices GetPrices(params Guid[] itemIds)
         {
-            return ExecuteWithLogging<IDictionary<Guid, Money>>(() =>
-                _appDbContext.Set<Item>().Where(item => itemIds.Contains(item.Id))
-                    .ToDictionary(item => item.Id, item => item.Price));
+            return ExecuteWithLogging(() =>
+                new ItemPrices(_appDbContext.Set<Item>().Where(item => itemIds.Contains(item.Id))
+                    .ToDictionary(item => item.Id, item => item.Price)));
         }
     }
 }

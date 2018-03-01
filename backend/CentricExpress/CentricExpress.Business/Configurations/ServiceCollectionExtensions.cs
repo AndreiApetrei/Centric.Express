@@ -11,6 +11,7 @@ namespace CentricExpress.Business.Configurations
             services.AddTransient<IItemService, ItemService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IPictureService, PictureService>();
+            services.AddTransient<IOrderFactory, OrderFactory>();
         }
     }
 }
