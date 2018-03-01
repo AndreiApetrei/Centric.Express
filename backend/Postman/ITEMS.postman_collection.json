@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ITEMS",
-		"_postman_id": "2fc8265c-9cfd-be88-dec8-f1acdc3e63b1",
+		"_postman_id": "cc36f918-66f9-4bf2-9a03-949df8d831f7",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -13,7 +13,10 @@
 				"url": "http://localhost:58277/api/items",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -21,10 +24,30 @@
 		{
 			"name": "http://localhost:58277/api/items/withId",
 			"request": {
-				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b75",
+				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b7",
 				"method": "GET",
 				"header": [],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58277/api/items",
+			"request": {
+				"url": "http://localhost:58277/api/items",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Description\": \"0123456789\",\n\t\"Price\": 10\n}"
+				},
 				"description": ""
 			},
 			"response": []

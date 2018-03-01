@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,10 +12,12 @@ namespace CentricExpress.WebApi.Middlewares
     public class ExceptionsMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly IHostingEnvironment _env;
 
-        public ExceptionsMiddleware(RequestDelegate next)
+        public ExceptionsMiddleware(RequestDelegate next, IHostingEnvironment env)
 	    {
             _next = next;
+            _env = env;
 	    }
 
 	    public async Task Invoke(HttpContext context)
@@ -23,8 +26,12 @@ namespace CentricExpress.WebApi.Middlewares
 	        {
 	            await _next(context);
 	        }
-	        catch (Exception)
+	        catch (Exception ex)
             {
+                if (_env.IsDevelopment()) {
+                    throw ex;
+                }
+
                 if (!context.Response.HasStarted)
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

@@ -9,5 +9,7 @@ namespace CentricExpress.Business.Services
         IEnumerable<ItemDto> Get();
 
         ItemDetailsDto Get(Guid id);
+
+        Guid Insert(ItemDto itemDto);
     }
 }

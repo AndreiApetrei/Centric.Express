@@ -33,5 +33,16 @@ namespace CentricExpress.Business.Services.Implementations
 
             return ItemDetailsDto.MapFromModel(item);
         }
+
+        public Guid Insert(ItemDto itemDto)
+        {
+            itemDto.Id = Guid.NewGuid();
+
+            _itemRepository.Insert(ItemDto.MapFromModel(itemDto));
+
+            _itemRepository.SaveChanges();
+
+            return itemDto.Id;
+        }
     }
 }

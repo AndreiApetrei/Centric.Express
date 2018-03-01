@@ -18,9 +18,9 @@ namespace CentricExpress.WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ItemDto> Get()
+        public IActionResult Get()
         {
-            return itemService.Get();
+            return Ok(itemService.Get());
         }
 
         [HttpGet("{id}")]
@@ -42,9 +42,16 @@ namespace CentricExpress.WebApi.Controllers
         }
         
         [HttpPost]
-        public void Post([FromBody]ItemDto item)
+        public IActionResult Post([FromBody]ItemDto item)
         {
-            // item to be added in database
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var itemId = itemService.Insert(item);
+
+            return CreatedAtAction("Get", new { id = itemId }, new { id = itemId });
         }
         
         [HttpPut("{id}")]
