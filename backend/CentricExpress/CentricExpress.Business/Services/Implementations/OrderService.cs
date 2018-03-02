@@ -1,4 +1,5 @@
-﻿using CentricExpress.Business.Domain;
+﻿using System;
+using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
@@ -15,17 +16,19 @@ namespace CentricExpress.Business.Services.Implementations
             this.orderFactory = orderFactory;
         }
 
-        public void PlaceOrder(OrderDto orderDto)
+        public Guid PlaceOrder(OrderDto orderDto)
         {
             var order = orderFactory.CreateOrder(orderDto);
             
             orderRepository.Insert(order);
             orderRepository.SaveChanges();
-        }
-    }
 
-    public interface IOrderFactory
-    {
-        Order CreateOrder(OrderDto orderDto);
+            return order?.Id ?? Guid.Empty;
+        }
+
+        public OrderDto GetById(Guid id)
+        {
+            return OrderDto.FromDomain(orderRepository.GetById(id));
+        }
     }
 }

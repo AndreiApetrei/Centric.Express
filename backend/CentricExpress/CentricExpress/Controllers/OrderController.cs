@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
-using System.Runtime.Serialization;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +15,33 @@ namespace CentricExpress.WebApi.Controllers
         {
             this.orderService = orderService;
         }
+        
+        [HttpGet("{id}")]
+        public IActionResult Get(Guid id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var order = orderService.GetById(id);
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(order);
+        }
 
         [HttpPost]
-        public void Post([FromBody] OrderDto order)
+        public IActionResult Post([FromBody] OrderDto order)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
             Console.WriteLine("received an order dto {0}", order);
 
             if (order == null)
@@ -29,7 +50,9 @@ namespace CentricExpress.WebApi.Controllers
                     "order is null, check if you prpvide correct Guids for customer id and item id. If they are not valid the serialization will fail");
             }
 
-            orderService.PlaceOrder(order);
+            var orderId = orderService.PlaceOrder(order);
+
+            return CreatedAtAction("Get", new { id = orderId }, new { id = orderId });
         }
     }
 }
