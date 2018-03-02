@@ -38,8 +38,7 @@ namespace CentricExpress.Business.Services.Implementations
         {
             itemDto.Id = Guid.NewGuid();
 
-            itemRepository.Insert(ItemDto.MapFromModel(itemDto));
-
+            itemRepository.Insert(itemDto.ToDomain());
             itemRepository.SaveChanges();
 
             return itemDto.Id;
