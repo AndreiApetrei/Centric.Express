@@ -6,15 +6,13 @@ namespace CentricExpress.Business.Services.Implementations
 {
     public class OrderService : IOrderService
     {
-        private readonly IOrderRepository orderRepository;
         private readonly IOrderFactory orderFactory;
         private readonly ICustomerOrdersRepository customerOrdersRepository;
         private readonly IUnitOfWork unitOfWork;
 
-        public OrderService(IOrderRepository orderRepository, IOrderFactory orderFactory,
+        public OrderService(IOrderFactory orderFactory,
             ICustomerOrdersRepository customerOrdersRepository, IUnitOfWork unitOfWork)
         {
-            this.orderRepository = orderRepository;
             this.orderFactory = orderFactory;
             this.customerOrdersRepository = customerOrdersRepository;
             this.unitOfWork = unitOfWork;
@@ -33,7 +31,7 @@ namespace CentricExpress.Business.Services.Implementations
 
         public OrderDto GetById(Guid id)
         {
-            return OrderDto.FromDomain(orderRepository.GetByOrderId(id));
+            return OrderDto.FromDomain(customerOrdersRepository.GetOrderById(id));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace CentricExpress.Business.Tests
 
         private OrderService CreateSUT()
         {
-            return new OrderService(orderRepositoryMock.Object, orderFactoryMock.Object, customerOrderRepositoryMock.Object, unitOfWorkMock.Object);
+            return new OrderService(orderFactoryMock.Object, customerOrderRepositoryMock.Object, unitOfWorkMock.Object);
         }
 
 

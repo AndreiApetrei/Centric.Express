@@ -1,4 +1,5 @@
 ﻿using System;
+using CentricExpress.Business.Domain;
 using CentricExpress.Business.Repositories;
 using CentricExpress.Business.Services.Implementations;
 
@@ -21,6 +22,11 @@ namespace CentricExpress.DataAccess.Repositories
         public void Save(CustomerOrders customerOrders)
         {
             orderRepository.Insert(customerOrders.NewOrder);
+        }
+
+        public Order GetOrderById(Guid id)
+        {
+            return orderRepository.GetByOrderId(id);
         }
     }
 }
