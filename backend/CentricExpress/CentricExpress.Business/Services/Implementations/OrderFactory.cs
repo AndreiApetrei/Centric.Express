@@ -1,4 +1,6 @@
-﻿using CentricExpress.Business.Domain;
+﻿using System;
+using System.Linq;
+using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
@@ -15,7 +17,12 @@ namespace CentricExpress.Business.Services.Implementations
 
         public Order CreateOrder(OrderDto orderDto)
         {
-            return orderDto.ToDomain(itemIds => itemRepository.GetPrices(itemIds));
+            return orderDto.ToDomain(itemRepository.GetPrices(GetItemIds(orderDto)));
+        }
+
+        private static Guid[] GetItemIds(OrderDto orderDto)
+        {
+            return orderDto.OrderLines?.Select(dto => dto.ItemId).ToArray();
         }
     }
 }

@@ -15,10 +15,8 @@ namespace CentricExpress.DataAccess.Configurations.Entities
             builder.Property(o => o.Date).IsRequired();
 
             builder.Property(o => o.CustomerId);
-            
-            builder.HasMany(o => o.OrderLines)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(o => o.OrderLines).WithOne().OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

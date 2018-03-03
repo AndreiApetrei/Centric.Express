@@ -1,5 +1,4 @@
 ﻿using System;
-using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
@@ -7,28 +6,34 @@ namespace CentricExpress.Business.Services.Implementations
 {
     public class OrderService : IOrderService
     {
-        private readonly IRepository<Order> orderRepository;
+        private readonly IOrderRepository orderRepository;
         private readonly IOrderFactory orderFactory;
+        private readonly ICustomerOrdersRepository customerOrdersRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public OrderService(IRepository<Order> orderRepository, IOrderFactory orderFactory)
+        public OrderService(IOrderRepository orderRepository, IOrderFactory orderFactory,
+            ICustomerOrdersRepository customerOrdersRepository, IUnitOfWork unitOfWork)
         {
             this.orderRepository = orderRepository;
             this.orderFactory = orderFactory;
+            this.customerOrdersRepository = customerOrdersRepository;
+            this.unitOfWork = unitOfWork;
         }
 
-        public Guid PlaceOrder(OrderDto orderDto)
+        public OrderPaymentSummary PlaceOrder(OrderDto orderDto)
         {
-            var order = orderFactory.CreateOrder(orderDto);
-            
-            orderRepository.Insert(order);
-            orderRepository.SaveChanges();
+            var customerOrders = customerOrdersRepository.GetByCustomerId(orderDto.CustomerId);
+            customerOrders.PlaceOrder(orderFactory.CreateOrder(orderDto));
 
-            return order?.Id ?? Guid.Empty;
+            customerOrdersRepository.Save(customerOrders);
+            unitOfWork.Commit();
+
+            return OrderPaymentSummary.FromCustomerOrders(customerOrders);
         }
 
         public OrderDto GetById(Guid id)
         {
-            return OrderDto.FromDomain(orderRepository.GetById(id));
+            return OrderDto.FromDomain(orderRepository.GetByOrderId(id));
         }
     }
 }

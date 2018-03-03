@@ -11,6 +11,11 @@ namespace CentricExpress.Business.Domain
             Price = itemPrice;
         }
 
+        private OrderLine()
+        {
+            //orm
+        }
+
         public Guid Id { get; private set; }
         
         public int Quantity { get; private set; }

@@ -12,10 +12,15 @@ namespace CentricExpress.DataAccess.Configurations.IoC
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
             
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IItemRepository, ItemRepository>();
-            services.AddTransient<IRepository<Order>, Repository<Order>>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IRepository<Picture>, Repository<Picture>>();
+
+            services.AddTransient<ICustomerOrdersRepository, CustomerOrdersRepository>();
+
         }
     }
 }

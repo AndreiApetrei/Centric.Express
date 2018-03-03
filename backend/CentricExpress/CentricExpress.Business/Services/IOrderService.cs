@@ -5,7 +5,7 @@ namespace CentricExpress.Business.Services
 {
     public interface IOrderService
     {
-        Guid PlaceOrder(OrderDto order);
+        OrderPaymentSummary PlaceOrder(OrderDto order);
         OrderDto GetById(Guid id);
     }
 }

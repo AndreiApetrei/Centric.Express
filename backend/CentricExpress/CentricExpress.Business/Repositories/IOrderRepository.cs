@@ -3,8 +3,8 @@ using CentricExpress.Business.Domain;
 
 namespace CentricExpress.Business.Repositories
 {
-    public interface IItemRepository : IRepository<Item>
+    public interface IOrderRepository : IRepository<Order>
     {
-        ItemPrices GetPrices(params Guid[] itemIds);
+        Order GetByOrderId(Guid id); 
     }
-}
+} 

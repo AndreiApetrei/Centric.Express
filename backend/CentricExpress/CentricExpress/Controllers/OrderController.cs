@@ -41,8 +41,6 @@ namespace CentricExpress.WebApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
-            Console.WriteLine("received an order dto {0}", order);
 
             if (order == null)
             {
@@ -50,9 +48,9 @@ namespace CentricExpress.WebApi.Controllers
                     "order is null, check if you prpvide correct Guids for customer id and item id. If they are not valid the serialization will fail");
             }
 
-            var orderId = orderService.PlaceOrder(order);
+            var orderPayment = orderService.PlaceOrder(order);
 
-            return CreatedAtAction("Get", new { id = orderId }, new { id = orderId });
+            return CreatedAtAction("Get", new { id = orderPayment.OrderId }, new { id = orderPayment.OrderId, TotalAmount = orderPayment.TotalAmount });
         }
     }
 }
