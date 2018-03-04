@@ -9,12 +9,12 @@ namespace CentricExpress.Business.Configurations
     {
         public static void AddBusiness(this IServiceCollection services)
         {
-            services.AddTransient<IItemService, ItemService>();
-            services.AddTransient<IOrderService, OrderService>();
-            services.AddTransient<IPictureService, PictureService>();
-            services.AddTransient<IOrderFactory, OrderFactory>();
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPictureService, PictureService>();
+            services.AddScoped<IOrderFactory, OrderFactory>();
 
-            services.AddTransient<IPointsCalculator, Points20ProcentOfTotalOrder>();
+            services.AddScoped<IPointsCalculator, Points20ProcentOfTotalOrder>();
         }
     }
 }

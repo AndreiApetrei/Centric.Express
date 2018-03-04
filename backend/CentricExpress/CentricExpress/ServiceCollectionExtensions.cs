@@ -14,7 +14,6 @@ namespace CentricExpress.WebApi
         public static void AddIoc(this IServiceCollection services, string connectionString)
         {
             services.AddDataAccess(connectionString);
-
             services.AddBusiness();
             services.AddFluentValidationForDtos();
         }
