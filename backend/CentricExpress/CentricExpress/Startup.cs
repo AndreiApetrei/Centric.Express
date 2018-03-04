@@ -1,5 +1,5 @@
-﻿using CentricExpress.DataAccess;
-using CentricExpress.DataAccess.DatabaseInitializers;
+﻿using CentricExpress.Business.Events;
+using CentricExpress.DataAccess;
 using CentricExpress.WebApi.Middlewares;
 
 using FluentValidation.AspNetCore;
@@ -54,6 +54,8 @@ namespace CentricExpress.WebApi
 
             app.UseExceptionsMiddleware();
             app.UseMvc();
+            
+            app.ApplicationServices.UseDomainEvents();
 
             //TODO: add following line only after the database is created
             //DatabaseInitializer.Seed(appDbContext);

@@ -4,25 +4,24 @@ using System.Linq;
 using System.Linq.Expressions;
 using CentricExpress.Business.Domain;
 using CentricExpress.Business.Repositories;
-using CentricExpress.Business.Services;
 using Microsoft.Extensions.Logging;
 
 namespace CentricExpress.DataAccess.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Aggregate
     {
-        protected readonly AppDbContext _appDbContext;
-        private readonly ILogger<Repository<T>> _logger;
+        protected readonly AppDbContext AppDbContext;
+        private readonly ILogger<Repository<T>> logger;
 
         public Repository(AppDbContext appDbContext, ILogger<Repository<T>> logger)
         {
-            _appDbContext = appDbContext;
-            _logger = logger;
+            AppDbContext = appDbContext;
+            this.logger = logger;
         }
 
         public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return ExecuteWithLogging(() => _appDbContext.Set<T>().Where(predicate).ToList());
+            return ExecuteWithLogging(() => AppDbContext.Set<T>().Where(predicate).ToList());
         }
 
         public IEnumerable<T> Get()
@@ -32,29 +31,29 @@ namespace CentricExpress.DataAccess.Repositories
 
         public T GetById(Guid id)
         {
-            return ExecuteWithLogging(() => _appDbContext.Set<T>()
+            return ExecuteWithLogging(() => AppDbContext.Set<T>()
                 .Find(id));
         }
 
         public void Insert(T entity)
         {
-            ExecuteWithLogging(() => _appDbContext.Set<T>().Add(entity));
+            ExecuteWithLogging(() => AppDbContext.Set<T>().Add(entity));
         }
 
         public void Update(T entity)
         {
-            ExecuteWithLogging(() => _appDbContext.Set<T>().Update(entity));
+            ExecuteWithLogging(() => AppDbContext.Set<T>().Update(entity));
         }
 
         public void Remove(Guid id)
         {
             var entity = GetById(id);
-            ExecuteWithLogging(() => _appDbContext.Set<T>().Remove(entity));
+            ExecuteWithLogging(() => AppDbContext.Set<T>().Remove(entity));
         }
 
         public void SaveChanges()
         {
-            ExecuteWithLogging(() => _appDbContext.SaveChanges());
+            ExecuteWithLogging(() => AppDbContext.SaveChanges());
         }
 
         protected TResult ExecuteWithLogging<TResult>(Func<TResult> func)
@@ -65,7 +64,7 @@ namespace CentricExpress.DataAccess.Repositories
             }
             catch (Exception e)
             {
-                _logger.LogError(e, "Repository error!");
+                logger.LogError(e, "Repository error!");
                 throw;
             }
         }

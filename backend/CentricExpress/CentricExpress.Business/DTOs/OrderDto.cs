@@ -12,10 +12,15 @@ namespace CentricExpress.Business.DTOs
 
         public static OrderDto FromDomain(Order order)
         {
+            if (order == null)
+            {
+                return null;
+            }
+            
             return new OrderDto()
             {
                 CustomerId = order.CustomerId,
-                OrderLines = order.OrderLines.Select(BuildOrderLineDto).ToList()
+                OrderLines = order.OrderLines?.Select(BuildOrderLineDto).ToList() ?? new List<OrderLineDto>()
             };
         }
 
@@ -23,36 +28,22 @@ namespace CentricExpress.Business.DTOs
         {
             return new OrderLineDto
             {
-                ItemId = line.ItemId, Quantity = line.Quantity
+                ItemId = line.ItemId,
+                Quantity = line.Quantity
             };
         }
 
-        public Order ToDomain(Func<Guid[], ItemPrices> getPricesFunction)
+        public Order ToDomain(ItemPrices itemPrices)
         {
-            var itemPrices = getPricesFunction(ItemIds);
-
             var orderLines = BuildDomainOrderLines(itemPrices);
             return new Order(CustomerId, orderLines);
         }
 
         private IEnumerable<OrderLine> BuildDomainOrderLines(ItemPrices itemPrices)
         {
-            if (OrderLines == null)
-            {
-                return new List<OrderLine>();
-            }
-            
-            var orderLines =
-                OrderLines.Select(dto => new OrderLine(dto.ItemId, dto.Quantity, itemPrices.GetPrice(dto.ItemId)));
-            return orderLines;
-        }
-
-        private Guid[] ItemIds
-        {
-            get
-            {
-                return OrderLines?.Select(dto => dto.ItemId).ToArray() ?? new Guid[0];
-            }
+            return OrderLines?.Select(dto =>
+                       new OrderLine(dto.ItemId, dto.Quantity, itemPrices.GetPrice(dto.ItemId))) ??
+                   new List<OrderLine>();
         }
 
         public OrderDto WithOrderLine(Guid itemId, int quantity)

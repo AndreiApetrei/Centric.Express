@@ -16,7 +16,7 @@ namespace CentricExpress.DataAccess.Repositories
         public ItemPrices GetPrices(params Guid[] itemIds)
         {
             return ExecuteWithLogging(() =>
-                new ItemPrices(_appDbContext.Set<Item>().Where(item => itemIds.Contains(item.Id))
+                new ItemPrices(AppDbContext.Set<Item>().Where(item => itemIds.Contains(item.Id))
                     .ToDictionary(item => item.Id, item => item.Price)));
         }
     }

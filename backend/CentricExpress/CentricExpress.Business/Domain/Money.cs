@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Runtime.CompilerServices;
 
 namespace CentricExpress.Business.Domain
 {
@@ -22,13 +20,43 @@ namespace CentricExpress.Business.Domain
             Currency = currency;
             Value = value;
         }
-        
-        public string Currency { get; private set;}
+
+        public string Currency { get; private set; }
         public decimal Value { get; private set; }
 
         public static Money operator *(Money money, int quantity)
         {
             return money.MultiplyWith(quantity);
+        }
+
+        public static Money operator +(Money money, Money otherMoney)
+        {
+            if (money == Zero)
+            {
+                return otherMoney;
+            }
+
+            if (otherMoney == Zero)
+            {
+                return money;
+            }
+
+            if (!Equals(money.Currency, money.Currency))
+            {
+                throw new ArgumentException("if you want to sum up Money they should have the same currency", "money");
+            }
+
+            return new Money(money.Value + otherMoney.Value, money.Currency);
+        }
+        
+        public static bool operator ==(Money left, Money right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Money left, Money right)
+        {
+            return !Equals(left, right);
         }
 
         private Money MultiplyWith(int quantity)
@@ -60,6 +88,11 @@ namespace CentricExpress.Business.Domain
         public static Money From(decimal value, Currency currency)
         {
             return new Money(value, currency);
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(Currency)}: {Currency}, {nameof(Value)}: {Value}";
         }
     }
 }
