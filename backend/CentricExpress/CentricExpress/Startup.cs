@@ -1,6 +1,9 @@
 ﻿using CentricExpress.DataAccess;
 using CentricExpress.DataAccess.DatabaseInitializers;
 using CentricExpress.WebApi.Middlewares;
+
+using FluentValidation.AspNetCore;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,9 +24,9 @@ namespace CentricExpress.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddFluentValidation(fv => fv.ImplicitlyValidateChildProperties = true);
             services.AddIoc(Configuration.GetConnectionString("DefaultConnection"));
-            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
@@ -43,7 +46,7 @@ namespace CentricExpress.WebApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,4 +60,3 @@ namespace CentricExpress.WebApi
         }
     }
 }
- 
