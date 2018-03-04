@@ -24,7 +24,7 @@ namespace CentricExpress.Business.Domain
         public string Currency { get; private set; }
         public decimal Value { get; private set; }
 
-        public static Money operator *(Money money, int quantity)
+        public static Money operator *(Money money, decimal quantity)
         {
             return money.MultiplyWith(quantity);
         }
@@ -59,7 +59,7 @@ namespace CentricExpress.Business.Domain
             return !Equals(left, right);
         }
 
-        private Money MultiplyWith(int quantity)
+        private Money MultiplyWith(decimal quantity)
         {
             return new Money(Value * quantity, this.Currency);
         }

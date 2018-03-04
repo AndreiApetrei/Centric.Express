@@ -1,25 +1,36 @@
 ﻿using System;
 using CentricExpress.Business.Domain;
-using CentricExpress.Business.Services.Implementations;
 
 namespace CentricExpress.Business.DTOs
 {
     public class OrderPaymentSummary
     {
-        public Guid OrderId { get; }
-        public Money TotalAmount { get; }
-
-        private OrderPaymentSummary(Guid orderId, Money totalAmount)
+        private OrderPaymentSummary()
         {
-            OrderId = orderId;
-            TotalAmount = totalAmount;
+            TotalAmount = Money.Zero;
         }
+
+        public Guid OrderId { get; set; }
+        public Money TotalAmount { get; set; }
+        public int NewPoints { get; set; }
+        public int TotalPoints { get; set; }
+        public string CustomerName { get; set; }
 
         public static OrderPaymentSummary FromCustomerOrders(CustomerOrders customerOrders)
         {
-            return customerOrders?.NewOrder == null
-                ? new OrderPaymentSummary(Guid.Empty, Money.Zero)
-                : new OrderPaymentSummary(customerOrders.NewOrder.Id, customerOrders.NewOrder.TotalAmount);
+            if (customerOrders?.NewOrder == null)
+            {
+                return new OrderPaymentSummary();
+            }
+
+            return new OrderPaymentSummary
+            {
+                OrderId = customerOrders.NewOrder.Id,
+                TotalAmount = customerOrders.NewOrder.TotalAmount,
+                NewPoints = customerOrders.NewPoints.Points,
+                TotalPoints = customerOrders.TotalPoints,
+                CustomerName = customerOrders.CustomerName
+            };
         }
     }
 }

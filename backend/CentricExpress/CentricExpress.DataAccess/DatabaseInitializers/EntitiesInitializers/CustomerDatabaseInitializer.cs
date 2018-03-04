@@ -15,7 +15,7 @@ namespace CentricExpress.DataAccess.DatabaseInitializers.EntitiesInitializers
             }
 
             var items = new List<Customer> {
-                new Customer()
+                new Customer(Guid.Parse("12a079e3-f6a7-4c2c-b575-bb01e3372683"))
                 {
                     Age = 35, FirstName = "Dummy", Surname = "User"
                 },
