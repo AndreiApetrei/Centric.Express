@@ -1,5 +1,5 @@
-﻿using System.Numerics;
-using CentricExpress.Business.Domain;
+﻿using CentricExpress.Business.Domain;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,9 +14,9 @@ namespace CentricExpress.DataAccess.Configurations.Entities
 
             builder.Property(o => o.Date).IsRequired();
 
-            builder.Property(o => o.CustomerId);
-
             builder.HasMany(o => o.OrderLines).WithOne().OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne<Customer>().WithMany().HasForeignKey(o => o.CustomerId);
         }
     }
 }

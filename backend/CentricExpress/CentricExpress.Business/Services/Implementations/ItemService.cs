@@ -36,6 +36,7 @@ namespace CentricExpress.Business.Services.Implementations
 
         public Guid Insert(ItemDto itemDto)
         {
+            //TODO: verify if customer exists in database
             itemDto.Id = Guid.NewGuid();
 
             itemRepository.Insert(itemDto.ToDomain());

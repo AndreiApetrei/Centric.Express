@@ -8,9 +8,7 @@ namespace CentricExpress.Business.Validators
     {
         public OrderDtoValidator()
         {
-            //TODO: see about customerId - foreign key?
-            //RuleFor(o => o.CustomerId).NotEmpty();
-
+            RuleFor(o => o.CustomerId).NotEmpty();
             RuleFor(o => o.OrderLines).NotEmpty();
         }
     }
