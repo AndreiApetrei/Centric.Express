@@ -1,6 +1,5 @@
 ﻿using CentricExpress.Business.Domain;
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace CentricExpress.Business.DTOs
 {

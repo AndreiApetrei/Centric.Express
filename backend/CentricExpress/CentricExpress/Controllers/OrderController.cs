@@ -45,7 +45,7 @@ namespace CentricExpress.WebApi.Controllers
             if (order == null)
             {
                 throw new ArgumentNullException(nameof(order),
-                    "order is null, check if you prpvide correct Guids for customer id and item id. If they are not valid the serialization will fail");
+                    "order is null, check if you provide correct Guids for customer id and item id. If they are not valid the serialization will fail");
             }
 
             var orderPayment = orderService.PlaceOrder(order);

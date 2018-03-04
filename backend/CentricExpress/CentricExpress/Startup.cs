@@ -52,7 +52,7 @@ namespace CentricExpress.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseExceptionsMiddleware();
+            ///app.UseExceptionsMiddleware();
             app.UseMvc();
             
             app.ApplicationServices.UseDomainEvents();

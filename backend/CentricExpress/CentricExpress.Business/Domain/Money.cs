@@ -29,7 +29,7 @@ namespace CentricExpress.Business.Domain
             return money.MultiplyWith(quantity);
         }
 
-        public static Money operator +(Money money, Money otherMoney)
+        private static Money PerformOperatorOperation(Money money, Money otherMoney, Func<decimal, decimal, decimal> operatorFunc)
         {
             if (money == Zero)
             {
@@ -46,7 +46,17 @@ namespace CentricExpress.Business.Domain
                 throw new ArgumentException("if you want to sum up Money they should have the same currency", "money");
             }
 
-            return new Money(money.Value + otherMoney.Value, money.Currency);
+            return new Money(operatorFunc(money.Value, otherMoney.Value), money.Currency);
+        }
+
+        public static Money operator -(Money money, Money otherMoney)
+        {
+            return PerformOperatorOperation(money, otherMoney, (arg1, arg2) => arg1 - arg2);
+        }
+
+        public static Money operator +(Money money, Money otherMoney)
+        {
+            return PerformOperatorOperation(money, otherMoney, (arg1, arg2) => arg1 + arg2);
         }
         
         public static bool operator ==(Money left, Money right)

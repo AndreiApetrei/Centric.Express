@@ -31,6 +31,10 @@ namespace CentricExpress.Business.Domain
             get { return OrderLines.Aggregate(Money.Zero, (current, orderLine) => current + orderLine.Value); }
         }
 
+        public Money Discount { get; private set; }
+
+        public Money PayAmount => TotalAmount - Discount;
+
         public bool OrderlineValueIs(Guid itemId, Money value)
         {
             var orderLine = OrderLines.FirstOrDefault(line => line.ItemId == itemId);
@@ -51,6 +55,16 @@ namespace CentricExpress.Business.Domain
         public CustomerPoints GetPoints(IPointsCalculator pointsCalculator)
         {
             return new CustomerPoints(pointsCalculator?.Calculate(this) ?? 0, CustomerId, Id);
+        }
+
+        public void ApplyDiscount(IDiscountCalculator discountCalculator, int existingPoints)
+        {
+            if (discountCalculator == null)
+            {
+                return;
+            }
+            
+            Discount = discountCalculator.GetDiscount(this, existingPoints);
         }
     }
 }

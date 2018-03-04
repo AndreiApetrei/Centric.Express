@@ -10,16 +10,18 @@ namespace CentricExpress.Business.DTOs
 
         private OrderPaymentSummary()
         {
-            TotalAmount = Money.Zero;
+            OrderAmount = Money.Zero;
             Status = Status.OrderCreated;
         }
 
         public Guid OrderId { get; set; }
-        public Money TotalAmount { get; set; }
+        public Money OrderAmount { get; set; }
         public int NewPoints { get; set; }
         public int TotalPoints { get; set; }
         public string CustomerName { get; set; }
         public Status Status { get; private set; }
+        public Money Discount { get; set; }
+        public Money PayAmount { get; set; }
 
         public static OrderPaymentSummary FromCustomerOrders(CustomerOrders customerOrders)
         {
@@ -31,10 +33,12 @@ namespace CentricExpress.Business.DTOs
             return new OrderPaymentSummary
             {
                 OrderId = customerOrders.NewOrder.Id,
-                TotalAmount = customerOrders.NewOrder.TotalAmount,
                 NewPoints = customerOrders.NewPoints.Points,
                 TotalPoints = customerOrders.TotalPoints,
-                CustomerName = customerOrders.CustomerName
+                CustomerName = customerOrders.CustomerName,
+                OrderAmount = customerOrders.NewOrder.TotalAmount,
+                Discount = customerOrders.NewOrder.Discount,
+                PayAmount = customerOrders.NewOrder.PayAmount,
             };
         }
     }

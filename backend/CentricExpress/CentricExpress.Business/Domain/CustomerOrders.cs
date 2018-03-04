@@ -23,14 +23,19 @@ namespace CentricExpress.Business.Domain
         public CustomerPoints NewPoints { get; private set; }
 
         public int TotalPoints => ExistingPoints + NewPoints?.Points ?? 0;
+        public Money NewOrderDiscount => NewOrder == null ? Money.Zero : NewOrder.Discount;
 
-        public void PlaceOrder(Order order, IPointsCalculator pointsCalculator)
+        public void PlaceOrder(Order order, IPointsCalculator pointsCalculator, IDiscountCalculator discountCalculator = null) 
         {
             NewOrder = order;
-            if (order != null)
+
+            if (order == null)
             {
-                NewPoints = order.GetPoints(pointsCalculator);
+                return;
             }
+            
+            order.ApplyDiscount(discountCalculator, ExistingPoints);
+            NewPoints = order.GetPoints(pointsCalculator);
         }
     }
 }

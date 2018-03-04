@@ -15,6 +15,8 @@ namespace CentricExpress.Business.Configurations
             services.AddScoped<IOrderFactory, OrderFactory>();
 
             services.AddScoped<IPointsCalculator, Points20ProcentOfTotalOrder>();
+            services.AddScoped<IDiscountCalculator, DiscountCalculator>();
+            services.AddScoped<ICustomerTypeProvider, CustomerTypeProvider>();
         }
     }
 }

@@ -11,15 +11,17 @@ namespace CentricExpress.Business.Services.Implementations
         private readonly ICustomerOrdersRepository customerOrdersRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IPointsCalculator pointsCalculator;
+        private readonly IDiscountCalculator discountCalculator;
 
         public OrderService(IOrderFactory orderFactory,
             ICustomerOrdersRepository customerOrdersRepository, IUnitOfWork unitOfWork,
-            IPointsCalculator pointsCalculator)
+            IPointsCalculator pointsCalculator, IDiscountCalculator discountCalculator)
         {
             this.orderFactory = orderFactory;
             this.customerOrdersRepository = customerOrdersRepository;
             this.unitOfWork = unitOfWork;
             this.pointsCalculator = pointsCalculator;
+            this.discountCalculator = discountCalculator;
         }
 
         public OrderPaymentSummary PlaceOrder(OrderDto orderDto)
@@ -30,7 +32,7 @@ namespace CentricExpress.Business.Services.Implementations
                 return OrderPaymentSummary.NoCustoemrFound;
             }
             
-            customerOrders.PlaceOrder(orderFactory.CreateOrder(orderDto), pointsCalculator);
+            customerOrders.PlaceOrder(orderFactory.CreateOrder(orderDto), pointsCalculator, discountCalculator);
 
             customerOrdersRepository.Save(customerOrders);
             unitOfWork.Commit();
