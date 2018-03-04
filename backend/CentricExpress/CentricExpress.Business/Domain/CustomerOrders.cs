@@ -4,21 +4,21 @@ namespace CentricExpress.Business.Domain
 {
     public class CustomerOrders
     {
-        private readonly Guid customerId;
-        public string CustomerName { get; }
-
         public CustomerOrders(Guid customerId, int existingPoints = 0, string customerName = "")
         {
+            CustomerId = customerId;
             ExistingPoints = existingPoints;
-            this.customerId = customerId;
-            this.CustomerName = customerName;
+            CustomerName = customerName;
         }
 
         public CustomerOrders()
         {
         }
 
-        public int ExistingPoints { get; }
+        private int ExistingPoints { get; }
+        private Guid CustomerId { get; }
+
+        public string CustomerName { get; }
         public Order NewOrder { get; private set; }
         public CustomerPoints NewPoints { get; private set; }
 

@@ -17,12 +17,12 @@ namespace CentricExpress.DataAccess.Repositories
 
         public CustomerOrders GetByCustomerId(Guid customerId)
         {
-            return new CustomerOrders(customerId, GetExistingPoints(customerId), GetCustomerName(customerId));
+            var customer = appDbContext.Set<Customer>().Find(customerId);
+            return customer == null ? null : new CustomerOrders(customerId, GetExistingPoints(customerId), GetCustomerName(customer));
         }
 
-        private string GetCustomerName(Guid customerId)
+        private string GetCustomerName(Customer customer)
         {
-            var customer = appDbContext.Set<Customer>().Find(customerId);
             return customer == null ? string.Empty : customer.FullName;
         }
 

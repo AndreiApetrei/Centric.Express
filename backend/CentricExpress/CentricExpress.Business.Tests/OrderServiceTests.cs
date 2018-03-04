@@ -78,5 +78,16 @@ namespace CentricExpress.Business.Tests
 
             unitOfWorkMock.Verify(repository => repository.Commit());
         }
+        
+        [TestMethod]
+        public void Should_return_non_customer_order_summary_if_customer_do_not_exist()
+        {
+            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(It.IsAny<Guid>()))
+                .Returns((CustomerOrders) null);
+
+            var orderPaymentSummary = CreateSUT().PlaceOrder(new OrderDto());    
+            
+            Assert.AreEqual(OrderPaymentSummary.NoCustoemrFound, orderPaymentSummary);
+        }
     }
 }

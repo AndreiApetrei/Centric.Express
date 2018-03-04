@@ -50,6 +50,11 @@ namespace CentricExpress.WebApi.Controllers
 
             var orderPayment = orderService.PlaceOrder(order);
 
+            if (orderPayment.Status == Status.NoCustomerFound)
+            {
+                return NotFound(order.CustomerId);
+            }
+
             return CreatedAtAction("Get", new { id = orderPayment.OrderId }, orderPayment);
         }
     }
