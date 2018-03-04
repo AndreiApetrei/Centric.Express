@@ -24,6 +24,7 @@ namespace CentricExpress.Business.Services.Implementations
 
         public OrderPaymentSummary PlaceOrder(OrderDto orderDto)
         {
+            //TODO: verify if customer exists in database
             var customerOrders = customerOrdersRepository.GetByCustomerId(orderDto.CustomerId);
             customerOrders.PlaceOrder(orderFactory.CreateOrder(orderDto), pointsCalculator);
 
