@@ -27,7 +27,7 @@ namespace CentricExpress.Business.Domain
 
         public void PlaceOrder(Order order, IPointsCalculator pointsCalculator, IDiscountCalculator discountCalculator = null) 
         {
-            ////NewOrder = order;
+            NewOrder = order;
 
             if (order == null)
             {
