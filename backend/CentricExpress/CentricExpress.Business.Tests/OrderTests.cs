@@ -21,17 +21,4 @@ namespace CentricExpress.Business.Tests
             Assert.AreEqual(new Money(10 + 2 * 12 + 3 * 3, "EUR"),  order.TotalAmount);
         }
     }
-
-    [TestClass]
-    public class MoneyTests
-    {
-        [TestMethod]
-        public void Should_choose_the_right_currency_when_adding_with_zero()
-        {
-            Money money = Money.From(2, Currency.RON);
-            
-            Assert.AreEqual(money, money + Money.Zero);
-            Assert.AreEqual(money, Money.Zero + money);
-        }
-    }
 }

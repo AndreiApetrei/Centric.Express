@@ -50,7 +50,7 @@ namespace CentricExpress.WebApi.Controllers
 
             var orderPayment = orderService.PlaceOrder(order);
 
-            return CreatedAtAction("Get", new { id = orderPayment.OrderId }, new { id = orderPayment.OrderId, TotalAmount = orderPayment.TotalAmount });
+            return CreatedAtAction("Get", new { id = orderPayment.OrderId }, orderPayment);
         }
     }
 }

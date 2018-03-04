@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
-namespace CentricExpress.Business.Services.Implementations
+namespace CentricExpress.Business.Domain
 {
     public class OrderFactory : IOrderFactory
     {

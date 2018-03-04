@@ -1,4 +1,5 @@
-﻿using CentricExpress.Business.Services;
+﻿using CentricExpress.Business.Domain;
+using CentricExpress.Business.Services;
 using CentricExpress.Business.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,8 @@ namespace CentricExpress.Business.Configurations
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IPictureService, PictureService>();
             services.AddTransient<IOrderFactory, OrderFactory>();
+
+            services.AddTransient<IPointsCalculator, Points20ProcentOfTotalOrder>();
         }
     }
 }
