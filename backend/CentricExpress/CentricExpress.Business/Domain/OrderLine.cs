@@ -6,9 +6,10 @@ namespace CentricExpress.Business.Domain
     {
         public OrderLine(Guid itemId, int quantity, Money itemPrice)
         {
+            Id = Guid.NewGuid();
             ItemId = itemId;
             Quantity = quantity;
-            Price = itemPrice;
+            Price = itemPrice.Copy();
         }
 
         private OrderLine()

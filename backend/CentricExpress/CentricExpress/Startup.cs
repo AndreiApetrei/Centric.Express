@@ -52,10 +52,10 @@ namespace CentricExpress.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            ///app.UseExceptionsMiddleware();
+            app.UseExceptionsMiddleware();
             app.UseMvc();
             
-            app.ApplicationServices.UseDomainEvents();
+            //app.ApplicationServices.UseDomainEvents();
 
             //TODO: add following line only after the database is created
             //DatabaseInitializer.Seed(appDbContext);

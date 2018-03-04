@@ -26,10 +26,10 @@ namespace CentricExpress.WebApi.Middlewares
 	        {
 	            await _next(context);
 	        }
-	        catch (Exception ex)
+	        catch (Exception)
             {
                 if (_env.IsDevelopment()) {
-                    throw ex;
+                    throw;
                 }
 
                 if (!context.Response.HasStarted)

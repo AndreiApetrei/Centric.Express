@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace CentricExpress.Business.Domain
 {
@@ -103,6 +104,11 @@ namespace CentricExpress.Business.Domain
         public override string ToString()
         {
             return $"{nameof(Currency)}: {Currency}, {nameof(Value)}: {Value}";
+        }
+
+        public Money Copy()
+        {
+            return new Money(this.Value, this.Currency);
         }
     }
 }

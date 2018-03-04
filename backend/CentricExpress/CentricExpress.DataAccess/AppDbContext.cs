@@ -13,8 +13,6 @@ namespace CentricExpress.DataAccess
         }
 
         public DbSet<Customer> Customers { get; set; }
-        
-        public DbSet<Money> Money { get; set; }
 
         public DbSet<Item> Items { get; set; }
 
