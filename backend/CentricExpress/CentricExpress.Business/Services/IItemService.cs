@@ -6,7 +6,7 @@ namespace CentricExpress.Business.Services
 {
     public interface IItemService
     {
-        IEnumerable<ItemDto> Get();
+        IList<ItemDto> Get();
 
         ItemDetailsDto Get(Guid id);
 

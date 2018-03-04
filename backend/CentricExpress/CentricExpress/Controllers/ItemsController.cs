@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentricExpress.WebApi.Controllers
 {
-    [Produces("application/json")]
     [Route("api/items")]
     public class ItemsController : Controller
     {
@@ -20,13 +19,15 @@ namespace CentricExpress.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(itemService.Get());
+            var items = itemService.Get();
+
+            return Ok(items);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
                 return BadRequest(ModelState);
             }
@@ -44,14 +45,15 @@ namespace CentricExpress.WebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ItemDto item)
         {
-            if (!ModelState.IsValid)
+            if (item == null)
             {
                 return BadRequest(ModelState);
             }
 
             var itemId = itemService.Insert(item);
+            var itemDto = itemService.Get(itemId);
 
-            return CreatedAtAction("Get", new { id = itemId }, new { id = itemId });
+            return CreatedAtAction("Get", new { id = itemId }, itemDto);
         }
         
         [HttpPut("{id}")]

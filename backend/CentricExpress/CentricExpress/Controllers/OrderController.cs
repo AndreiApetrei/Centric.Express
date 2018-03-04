@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentricExpress.WebApi.Controllers
 {
-    [Produces("application/json")]
     [Route("api/orders")]
     public class OrderController : Controller
     {

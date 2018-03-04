@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentricExpress.WebApi.Controllers
 {
-    [Produces("application/json")]
     [Route("api/Pictures")]
     public class PicturesController : Controller
     {

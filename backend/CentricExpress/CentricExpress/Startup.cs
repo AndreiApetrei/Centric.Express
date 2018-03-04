@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -24,7 +25,15 @@ namespace CentricExpress.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddFluentValidation(fv => fv.ImplicitlyValidateChildProperties = true);
+            services.AddMvc(setupAction =>
+            {
+                setupAction.ReturnHttpNotAcceptable = true;
+
+                setupAction.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+                setupAction.InputFormatters.Add(new XmlSerializerInputFormatter());
+            })
+            .AddFluentValidation(fv => fv.ImplicitlyValidateChildProperties = true);
+
             services.AddIoc(Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddSwaggerGen(c =>

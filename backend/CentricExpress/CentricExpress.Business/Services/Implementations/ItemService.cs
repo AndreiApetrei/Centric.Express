@@ -16,7 +16,7 @@ namespace CentricExpress.Business.Services.Implementations
             this.itemRepository = itemRepository;
         }
 
-        public IEnumerable<ItemDto> Get()
+        public IList<ItemDto> Get()
         {
             return itemRepository.Get()?
                 .Select(i => new ItemDto
@@ -24,7 +24,7 @@ namespace CentricExpress.Business.Services.Implementations
                     Id = i.Id,
                     Description = i.Description,
                     Price = i.Price.Value 
-                });
+                }).ToList();
         }
 
         public ItemDetailsDto Get(Guid id)

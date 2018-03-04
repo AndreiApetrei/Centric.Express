@@ -2,17 +2,23 @@
 	"variables": [],
 	"info": {
 		"name": "ITEMS",
-		"_postman_id": "cc36f918-66f9-4bf2-9a03-949df8d831f7",
+		"_postman_id": "3f3a5462-b6b9-f0b2-2f8b-f81f811e9dfe",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:58277/api/items",
+			"name": "Items - JSON",
 			"request": {
 				"url": "http://localhost:58277/api/items",
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
@@ -22,18 +28,81 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:58277/api/items/withId",
+			"name": "Items - XML",
 			"request": {
-				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b7",
+				"url": "http://localhost:58277/api/items",
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items - GZIP",
+			"request": {
+				"url": "http://localhost:58277/api/items",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/gzip",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items by Id - JSON",
+			"request": {
+				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b75",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:58277/api/items",
+			"name": "Items by Id - XML",
+			"request": {
+				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b75",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items - Send JSON - Receive XML",
 			"request": {
 				"url": "http://localhost:58277/api/items",
 				"method": "POST",
@@ -42,11 +111,66 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"Description\": \"0123456789\",\n\t\"Price\": 10\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items - Send XML - Receive JSON",
+			"request": {
+				"url": "http://localhost:58277/api/items",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test</Description>\n    <Price>10</Price>\n</ItemDto>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items - Send XML - Receive XML",
+			"request": {
+				"url": "http://localhost:58277/api/items",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test</Description>\n    <Price>10</Price>\n</ItemDto>"
 				},
 				"description": ""
 			},
