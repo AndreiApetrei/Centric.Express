@@ -27,7 +27,7 @@ namespace CentricExpress.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            if (id == null)
+            if (id == null || ModelState.IsValid == false)
             {
                 return BadRequest(ModelState);
             }
@@ -45,24 +45,32 @@ namespace CentricExpress.WebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ItemDto item)
         {
-            if (item == null)
+            if (item == null || ModelState.IsValid == false)
             {
                 return BadRequest(ModelState);
             }
 
             var itemId = itemService.Insert(item);
-            var itemDto = itemService.Get(itemId);
 
+            var itemDto = itemService.Get(itemId);
             return CreatedAtAction("Get", new { id = itemId }, itemDto);
         }
-        
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            if (id == null || itemService.Get(id) == null)
+            {
+                return NotFound();
+            }
+
+            itemService.Delete(id);
+
+            return NoContent();
+        }
+
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
-        {
-        }
-        
-        [HttpDelete("{id}")]
-        public void Delete(int id)
         {
         }
     }

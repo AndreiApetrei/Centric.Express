@@ -43,5 +43,11 @@ namespace CentricExpress.Business.Services.Implementations
 
             return itemDto.Id;
         }
+
+        public void Delete(Guid id)
+        {
+            itemRepository.Remove(id);
+            itemRepository.SaveChanges();
+        }
     }
 }
