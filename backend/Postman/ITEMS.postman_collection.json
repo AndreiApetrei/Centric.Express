@@ -70,7 +70,7 @@
 		{
 			"name": "Items by Id - JSON",
 			"request": {
-				"url": "http://localhost:58277/api/items/b1e647c8-5055-4813-b0ca-26c6abea0b75",
+				"url": "http://localhost:58277/api/items/7cb55588-7bda-4fdd-ab14-0f88079efa84",
 				"method": "GET",
 				"header": [
 					{
@@ -171,6 +171,20 @@
 				"body": {
 					"mode": "raw",
 					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test</Description>\n    <Price>10</Price>\n</ItemDto>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Items by Id",
+			"request": {
+				"url": "http://localhost:58277/api/items/7cb55588-7bda-4fdd-ab14-0f88079efa84",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
 				"description": ""
 			},
