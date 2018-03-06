@@ -8,10 +8,12 @@ namespace CentricExpress.Business.Services
     {
         IList<ItemDto> Get();
 
-        ItemDetailsDto Get(Guid id);
+        ItemDto Get(Guid id);
 
-        Guid Insert(ItemDto itemDto);
+        Guid Add(ItemDto itemDto);
 
         void Delete(Guid id);
+
+        ItemDto Update(ItemDto itemDto);
     }
 }

@@ -21,5 +21,21 @@ namespace CentricExpress.Business.DTOs
                 Price = Money.From(Price, Currency.Nothing)
             };
         }
+
+        public static ItemDto FromDomain(Item item)
+        {
+            if (item == null)
+            {
+                return null;
+            }
+
+            return new ItemDto
+            {
+                Id = item.Id,
+                Description = item.Description,
+                Price = item.Price.Value,
+                Picture = item.Picture
+            };
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
@@ -11,9 +10,12 @@ namespace CentricExpress.Business.Services.Implementations
     {
         private readonly IItemRepository itemRepository;
 
-        public ItemService(IItemRepository itemRepository)
+        private readonly IUnitOfWork unitOfWork;
+
+        public ItemService(IItemRepository itemRepository, IUnitOfWork unitOfWork)
         {
             this.itemRepository = itemRepository;
+            this.unitOfWork = unitOfWork;
         }
 
         public IList<ItemDto> Get()
@@ -23,23 +25,23 @@ namespace CentricExpress.Business.Services.Implementations
                 {
                     Id = i.Id,
                     Description = i.Description,
-                    Price = i.Price.Value 
+                    Price = i.Price.Value
                 }).ToList();
         }
 
-        public ItemDetailsDto Get(Guid id)
+        public ItemDto Get(Guid id)
         {
             var item = itemRepository.GetById(id);
 
-            return ItemDetailsDto.MapFromModel(item);
+            return ItemDto.FromDomain(item);
         }
 
-        public Guid Insert(ItemDto itemDto)
+        public Guid Add(ItemDto itemDto)
         {
             itemDto.Id = Guid.NewGuid();
 
             itemRepository.Insert(itemDto.ToDomain());
-            itemRepository.SaveChanges();
+            unitOfWork.Commit();
 
             return itemDto.Id;
         }
@@ -47,7 +49,14 @@ namespace CentricExpress.Business.Services.Implementations
         public void Delete(Guid id)
         {
             itemRepository.Remove(id);
-            itemRepository.SaveChanges();
+            unitOfWork.Commit();
+        }
+
+        public ItemDto Update(ItemDto item)
+        {
+            itemRepository.Update(item.ToDomain());
+            unitOfWork.Commit();
+            return item;
         }
     }
 }

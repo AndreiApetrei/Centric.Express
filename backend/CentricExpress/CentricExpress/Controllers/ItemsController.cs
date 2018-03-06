@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -50,7 +49,7 @@ namespace CentricExpress.WebApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var itemId = itemService.Insert(item);
+            var itemId = itemService.Add(item);
 
             var itemDto = itemService.Get(itemId);
             return CreatedAtAction("Get", new { id = itemId }, itemDto);
@@ -70,8 +69,25 @@ namespace CentricExpress.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(Guid id, [FromBody]ItemDto value)
         {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var item = itemService.Get(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            item.Description = value.Description;
+            item.Price = value.Price;
+
+            itemService.Update(item);
+
+            return NoContent();
         }
     }
 }
