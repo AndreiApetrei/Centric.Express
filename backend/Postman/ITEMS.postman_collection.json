@@ -177,6 +177,31 @@
 			"response": []
 		},
 		{
+			"name": "Items Update - Valid",
+			"request": {
+				"url": "http://localhost:58277/api/items/2ecfbe63-b8b4-4092-8169-1632b96a4039",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Description\": \"1000000000\",\n\t\"Price\": 25\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Items by Id",
 			"request": {
 				"url": "http://localhost:58277/api/items/7cb55588-7bda-4fdd-ab14-0f88079efa84",
