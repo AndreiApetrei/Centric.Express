@@ -26,19 +26,19 @@ namespace CentricExpress.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            if (id == null || ModelState.IsValid == false)
+            if (id == null)
             {
                 return BadRequest(ModelState);
             }
 
-            var itemDetails = itemService.Get(id);
+            var item = itemService.Get(id);
 
-            if (itemDetails == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return Ok(itemDetails);
+            return Ok(item);
         }
         
         [HttpPost]

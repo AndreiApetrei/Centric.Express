@@ -1,6 +1,5 @@
 using System;
 using CentricExpress.Business.Domain;
-using CentricExpress.Business.Services.Implementations;
 
 namespace CentricExpress.Business.Repositories
 {

@@ -1,0 +1,33 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Customers",
+		"_postman_id": "c79d909a-9502-4397-723f-a267e6e6e005",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers - JSON",
+			"request": {
+				"url": "http://localhost:50755/api/items",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Customers by Id - JSON",
+			"request": {
+				"url": "http://localhost:50755/api/customers/12a079e3-f6a7-4c2c-b575-bb01e3372683",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

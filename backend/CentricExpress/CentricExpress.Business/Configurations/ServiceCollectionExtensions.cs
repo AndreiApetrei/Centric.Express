@@ -12,6 +12,7 @@ namespace CentricExpress.Business.Configurations
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPictureService, PictureService>();
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IOrderFactory, OrderFactory>();
 
             services.AddScoped<IPointsCalculator, Points20ProcentOfTotalOrder>();

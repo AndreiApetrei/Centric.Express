@@ -1,0 +1,30 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ORDERS",
+		"_postman_id": "edd7f89c-dcaf-4114-e896-30ace675fc9b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post order",
+			"request": {
+				"url": "http://localhost:50755/api/orders",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerId\": \"fb5ef028-f7f4-4147-af4c-f07e6cf9d562\",\r\n  \"orderLines\": [\r\n    {\r\n      \"itemId\": \"b1e647c8-5055-4813-b0ca-26c6abea0b75\",\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
