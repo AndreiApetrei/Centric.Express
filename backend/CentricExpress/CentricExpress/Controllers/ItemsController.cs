@@ -80,7 +80,7 @@ namespace CentricExpress.WebApi.Controllers
 
             if (updatedItem == null)
             {
-                return NotFound();
+                return NotFound(id);
             }
 
             return NoContent();

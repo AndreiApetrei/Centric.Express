@@ -15,7 +15,9 @@ namespace CentricExpress.Business.Domain
         }
 
         public string Description { get; set; }
+
         public Money Price { get; set; }
+
         public byte[] Picture { get; set; }
     }
 }

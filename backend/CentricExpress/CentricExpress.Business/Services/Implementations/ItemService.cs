@@ -57,10 +57,18 @@ namespace CentricExpress.Business.Services.Implementations
         {
             var item = itemRepository.GetById(id);
 
+            if (item == null)
+            {
+                return null;
+            }
+
+            //stupid thing because EF. Semes that this will not be needed iin EF core 2.1.0
+            itemRepository.PrepareForUpdate(item.Price);
+
             item.Description = itemDto.Description;
             item.Price = Money.From(itemDto.Price, Currency.Nothing);
 
-            itemRepository.Update(item);
+            itemRepository.UpdateItem(item);
             unitOfWork.Commit();
 
             return ItemDto.FromDomain(item);

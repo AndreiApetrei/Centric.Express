@@ -26,6 +26,8 @@ namespace CentricExpress.Business.Tests
         [DataRow(1, CustomerType.Regular)]
         [DataRow(0, CustomerType.Regular)]
         
+        [DataRow(3, CustomerType.Regular)]
+        
         public void Test_customer_type(int points, CustomerType customerType)
         {
             Assert.AreEqual(customerType, CreateSUT().GetCustomerType(points));

@@ -8,9 +8,9 @@ namespace CentricExpress.Business.Validators
     {
         public ItemDtoValidator()
         {
-            RuleFor(i => i.Description).Length(10, 3000)
+            RuleFor<string>(i => i.Description).Length(10, 3000)
                                        .WithMessage("{PropertyName}'s length must be between {MinLength} and {MaxLength}");
-            RuleFor(i => i.Price).GreaterThan(0);
+            RuleFor<decimal>(i => i.Price).GreaterThan(0);
         }
     }
 }
