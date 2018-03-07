@@ -69,23 +69,19 @@ namespace CentricExpress.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody]ItemDto value)
+        public IActionResult Put(Guid id, [FromBody]ItemDto item)
         {
             if (ModelState.IsValid == false)
             {
                 return BadRequest(ModelState);
             }
 
-            var item = itemService.Get(id);
-            if (item == null)
+            var updatedItem = itemService.Update(id, item);
+
+            if (updatedItem == null)
             {
                 return NotFound();
             }
-
-            item.Description = value.Description;
-            item.Price = value.Price;
-
-            itemService.Update(item);
 
             return NoContent();
         }

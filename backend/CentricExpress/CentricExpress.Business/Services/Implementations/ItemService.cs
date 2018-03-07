@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CentricExpress.Business.Domain;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Repositories;
 
@@ -52,11 +53,17 @@ namespace CentricExpress.Business.Services.Implementations
             unitOfWork.Commit();
         }
 
-        public ItemDto Update(ItemDto item)
+        public ItemDto Update(Guid id, ItemDto itemDto)
         {
-            itemRepository.Update(item.ToDomain());
+            var item = itemRepository.GetById(id);
+
+            item.Description = itemDto.Description;
+            item.Price = Money.From(itemDto.Price, Currency.Nothing);
+
+            itemRepository.Update(item);
             unitOfWork.Commit();
-            return item;
+
+            return ItemDto.FromDomain(item);
         }
     }
 }

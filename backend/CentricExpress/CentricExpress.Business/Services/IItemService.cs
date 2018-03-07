@@ -14,6 +14,6 @@ namespace CentricExpress.Business.Services
 
         void Delete(Guid id);
 
-        ItemDto Update(ItemDto itemDto);
+        ItemDto Update(Guid id, ItemDto itemDto);
     }
 }
