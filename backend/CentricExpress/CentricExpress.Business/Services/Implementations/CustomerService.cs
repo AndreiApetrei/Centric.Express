@@ -18,12 +18,12 @@ namespace CentricExpress.Business.Services.Implementations
 
         public IList<CustomerDto> Get()
         {
-            return this.customerRepository.Get()?.Select(c => CustomerDto.FromDomain(c)).ToList();
+            return customerRepository.Get()?.Select(CustomerDto.FromDomain).ToList();
         }
 
         public CustomerDto Get(Guid id)
         {
-            var customer = this.customerRepository.GetById(id);
+            var customer = customerRepository.GetById(id);
 
             return CustomerDto.FromDomain(customer);
         }
