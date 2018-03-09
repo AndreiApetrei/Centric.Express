@@ -24,9 +24,9 @@ namespace CentricExpress.Business.Services.Implementations
             this.discountCalculator = discountCalculator;
         }
 
-        public OrderPaymentSummary PlaceOrder(OrderDto orderDto)
+        public OrderPaymentSummary PlaceOrder(OrderDto orderDto, Guid customerId)
         {
-            var customerOrders = customerOrdersRepository.GetByCustomerId(orderDto.CustomerId);
+            var customerOrders = customerOrdersRepository.GetByCustomerId(customerId);
             if (customerOrders == null)
             {
                 return OrderPaymentSummary.NoCustoemrFound;
@@ -40,9 +40,9 @@ namespace CentricExpress.Business.Services.Implementations
             return OrderPaymentSummary.FromCustomerOrders(customerOrders);
         }
 
-        public OrderDto GetById(Guid id)
+        public OrderDto GetById(Guid id, Guid customerId)
         {
-            return OrderDto.FromDomain(customerOrdersRepository.GetOrderById(id));
+            return OrderDto.FromDomain(customerOrdersRepository.GetOrderById(id, customerId));
         }
     }
 }

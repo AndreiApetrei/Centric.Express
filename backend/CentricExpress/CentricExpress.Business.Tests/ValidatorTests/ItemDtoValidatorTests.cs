@@ -12,12 +12,12 @@ namespace CentricExpress.Business.Tests.ValidatorTests
     [TestClass]
     public class ItemDtoValidatorTests
     {
-        private static ItemDtoValidator SystemUnderTest;
+        private ItemDtoValidator sut;
 
-        [ClassInitialize]
-        public static void ClassSetup(TestContext testContext)
+        [TestInitialize]
+        public void Initialize()
         {
-            SystemUnderTest = new ItemDtoValidator();
+            sut = new ItemDtoValidator();
         }
 
         [TestMethod]
@@ -27,11 +27,11 @@ namespace CentricExpress.Business.Tests.ValidatorTests
             var itemDto = new ItemDto
                           {
                               Description = "somedescription",
-                              Price = 10
+                              Price = 10, Currency = "EUR"
                           };
 
             //act
-            var result = SystemUnderTest.Validate(itemDto);
+            var result = sut.Validate(itemDto);
 
             //assert
             Assert.IsTrue(result.IsValid);
@@ -57,7 +57,7 @@ namespace CentricExpress.Business.Tests.ValidatorTests
                           };
 
             //act
-            var result = SystemUnderTest.Validate(itemDto);
+            var result = sut.Validate(itemDto);
 
             //assert
             Assert.IsFalse(result.IsValid);
@@ -76,7 +76,7 @@ namespace CentricExpress.Business.Tests.ValidatorTests
                           };
 
             //act
-            var result = SystemUnderTest.Validate(itemDto);
+            var result = sut.Validate(itemDto);
 
             //assert
             Assert.IsFalse(result.IsValid);
@@ -94,7 +94,7 @@ namespace CentricExpress.Business.Tests.ValidatorTests
                           };
 
             //act
-            var result = SystemUnderTest.Validate(itemDto);
+            var result = sut.Validate(itemDto);
 
             //assert
             Assert.IsFalse(result.IsValid);
@@ -108,11 +108,11 @@ namespace CentricExpress.Business.Tests.ValidatorTests
             var itemDto = new ItemDto
                           {
                               Description = "somedescription",
-                              Price = 10
+                              Price = 10, Currency = "EUR"
                           };
 
             //act
-            var result = SystemUnderTest.Validate(itemDto);
+            var result = sut.Validate(itemDto);
 
             //assert
             Assert.IsTrue(result.IsValid);

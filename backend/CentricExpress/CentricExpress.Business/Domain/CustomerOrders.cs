@@ -33,6 +33,8 @@ namespace CentricExpress.Business.Domain
             {
                 return;
             }
+
+            order.SetCustomerId(CustomerId);
             
             order.ApplyDiscount(discountCalculator, ExistingPoints);
             NewPoints = order.GetPoints(pointsCalculator);

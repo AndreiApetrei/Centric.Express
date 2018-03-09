@@ -37,9 +37,9 @@ namespace CentricExpress.DataAccess.Repositories
             appDbContext.Set<CustomerPoints>().Add(customerOrders.NewPoints);
         }
 
-        public Order GetOrderById(Guid id)
+        public Order GetOrderById(Guid id, Guid customerId)
         {
-            return appDbContext.Set<Order>().Where(order => order.Id == id).Include(order => order.OrderLines)
+            return appDbContext.Set<Order>().Where(order => order.Id == id && order.CustomerId == customerId).Include(order => order.OrderLines)
                 .FirstOrDefault();
         }
     }

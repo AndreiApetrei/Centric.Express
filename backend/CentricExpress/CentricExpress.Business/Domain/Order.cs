@@ -6,20 +6,15 @@ namespace CentricExpress.Business.Domain
 {
     public class Order : Aggregate
     {
-        public Order(Guid customerId, IEnumerable<OrderLine> orderLines) : this(customerId)
+        public Order(IEnumerable<OrderLine> orderLines)
         {
             OrderLines = orderLines.ToList();
+            Date = DateTime.Now;
         }
 
-        private Order()
+        public Order()
         {
             //orm
-        }
-
-        public Order(Guid customerId)
-        {
-            CustomerId = customerId;
-            Date = DateTime.Now;
         }
 
         public DateTime Date { get; private set; }
@@ -65,6 +60,11 @@ namespace CentricExpress.Business.Domain
             }
             
             Discount = discountCalculator.GetDiscount(this, existingPoints);
+        }
+
+        public void SetCustomerId(Guid customerId)
+        {
+            CustomerId = customerId;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CentricExpress.Business.Tests
 
         private static Order BuildOrder(Money value)
         {
-            return new Order(Guid.Empty).AddOrderLine(Guid.Empty, 1, value);
+            return new Order().AddOrderLine(Guid.Empty, 1, value);
         }
 
         private void MockCustomerTypeToBe(CustomerType customerType)

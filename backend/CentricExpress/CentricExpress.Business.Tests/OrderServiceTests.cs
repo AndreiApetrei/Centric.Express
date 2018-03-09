@@ -17,6 +17,7 @@ namespace CentricExpress.Business.Tests
         private Mock<IOrderFactory> orderFactoryMock;
         private Mock<IPointsCalculator> pointsCalculatorMock;
         private Mock<IUnitOfWork> unitOfWorkMock;
+        private Guid customerId;
 
         [TestInitialize]
         public void Initialize()
@@ -26,6 +27,7 @@ namespace CentricExpress.Business.Tests
             unitOfWorkMock = new Mock<IUnitOfWork>();
             pointsCalculatorMock = new Mock<IPointsCalculator>();
             discountCalculatorMock = new Mock<IDiscountCalculator>();
+            customerId = Guid.NewGuid();
         }
 
         private OrderService CreateSUT()
@@ -38,15 +40,15 @@ namespace CentricExpress.Business.Tests
         public void Should_save_the_customer_order_entity_after_placing_the_order_on_it()
         {
             var orderDto = new OrderDto();
-            var order = new Order(Guid.NewGuid(), new List<OrderLine>());
+            var order = new Order(new List<OrderLine>());
 
             var customerOrders = new CustomerOrders();
 
-            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(orderDto.CustomerId))
+            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(customerId))
                 .Returns(customerOrders);
             orderFactoryMock.Setup(factory => factory.CreateOrder(orderDto)).Returns(order);
 
-            CreateSUT().PlaceOrder(orderDto);
+            CreateSUT().PlaceOrder(orderDto, customerId);
 
             customerOrderRepositoryMock.Verify(repository => repository.Save(customerOrders));
         }
@@ -55,15 +57,15 @@ namespace CentricExpress.Business.Tests
         public void Should_use_the_points_calculator()
         {
             var orderDto = new OrderDto();
-            var order = new Order(Guid.NewGuid(), new List<OrderLine>());
+            var order = new Order(new List<OrderLine>());
 
             var customerOrders = new CustomerOrders();
 
-            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(orderDto.CustomerId))
+            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(customerId))
                 .Returns(customerOrders);
             orderFactoryMock.Setup(factory => factory.CreateOrder(orderDto)).Returns(order);
 
-            CreateSUT().PlaceOrder(orderDto);
+            CreateSUT().PlaceOrder(orderDto, customerId);
 
             pointsCalculatorMock.Verify(calculator => calculator.Calculate(order));
         }
@@ -72,15 +74,15 @@ namespace CentricExpress.Business.Tests
         public void Should_use_the_discount_calculator()
         {
             var orderDto = new OrderDto();
-            var order = new Order(Guid.NewGuid(), new List<OrderLine>());
+            var order = new Order(new List<OrderLine>());
 
             var customerOrders = new CustomerOrders();
 
-            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(orderDto.CustomerId))
+            customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(customerId))
                 .Returns(customerOrders);
             orderFactoryMock.Setup(factory => factory.CreateOrder(orderDto)).Returns(order);
 
-            CreateSUT().PlaceOrder(orderDto);
+            CreateSUT().PlaceOrder(orderDto, customerId);
 
             discountCalculatorMock.Verify(calculator => calculator.GetDiscount(order, customerOrders.TotalPoints));
         }
@@ -91,7 +93,7 @@ namespace CentricExpress.Business.Tests
             customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(It.IsAny<Guid>()))
                 .Returns(new CustomerOrders());
 
-            CreateSUT().PlaceOrder(new OrderDto());
+            CreateSUT().PlaceOrder(new OrderDto(), customerId);
 
             unitOfWorkMock.Verify(repository => repository.Commit());
         }
@@ -102,7 +104,7 @@ namespace CentricExpress.Business.Tests
             customerOrderRepositoryMock.Setup(repository => repository.GetByCustomerId(It.IsAny<Guid>()))
                 .Returns((CustomerOrders) null);
 
-            var orderPaymentSummary = CreateSUT().PlaceOrder(new OrderDto());
+            var orderPaymentSummary = CreateSUT().PlaceOrder(new OrderDto(), customerId);
 
             Assert.AreEqual(OrderPaymentSummary.NoCustoemrFound, orderPaymentSummary);
         }

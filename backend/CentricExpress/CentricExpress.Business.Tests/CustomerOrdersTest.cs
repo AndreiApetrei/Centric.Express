@@ -26,7 +26,7 @@ namespace CentricExpress.Business.Tests
 
         private static Order BuildOrder(Money price)
         {
-            return new Order(Guid.Empty).AddOrderLine(Guid.NewGuid(), 1, price);
+            return new Order().AddOrderLine(Guid.NewGuid(), 1, price);
         }
 
         [TestMethod]

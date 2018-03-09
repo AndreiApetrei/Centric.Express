@@ -7,6 +7,6 @@ namespace CentricExpress.Business.Repositories
     {
         CustomerOrders GetByCustomerId(Guid customerId);
         void Save(CustomerOrders customerOrders);
-        Order GetOrderById(Guid id);
+        Order GetOrderById(Guid id, Guid customerId);
     }
 }

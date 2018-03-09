@@ -16,7 +16,7 @@ namespace CentricExpress.Business.Tests
             orderLines.Add(new OrderLine(Guid.NewGuid(), 2, Money.From(12, Currency.EUR)));
             orderLines.Add(new OrderLine(Guid.NewGuid(), 3, Money.From(3, Currency.EUR)));
             
-            var order = new Order(Guid.NewGuid(), orderLines);
+            var order = new Order(orderLines);
             
             Assert.AreEqual(new Money(10 + 2 * 12 + 3 * 3, "EUR"),  order.TotalAmount);
         }

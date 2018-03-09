@@ -8,7 +8,6 @@ namespace CentricExpress.Business.Validators
     {
         public OrderDtoValidator()
         {
-            RuleFor(o => o.CustomerId).NotEmpty();
             RuleFor(o => o.OrderLines).NotEmpty();
         }
     }

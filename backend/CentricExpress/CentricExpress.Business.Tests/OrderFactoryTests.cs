@@ -63,19 +63,5 @@ namespace CentricExpress.Business.Tests
             var sut = CreateSut();
             var order = sut.CreateOrder(orderDto);
         }
-        
-        [TestMethod]
-        public void Should_map_the_customer()
-        {
-            var customerId = Guid.NewGuid();
-            var orderDto = new OrderDto().WithCustomer(customerId);
-
-            itemRepository.Setup(repository => repository.GetPrices()).Returns(new ItemPrices());
-
-            var sut = CreateSut();
-            var order = sut.CreateOrder(orderDto);
-
-            Assert.AreEqual(customerId, order.CustomerId);
-        } 
     }
 }

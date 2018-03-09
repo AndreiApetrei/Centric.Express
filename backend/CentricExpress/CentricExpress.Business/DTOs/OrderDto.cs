@@ -7,7 +7,6 @@ namespace CentricExpress.Business.DTOs
 {
     public class OrderDto
     {
-        public Guid CustomerId { get; set; }
         public ICollection<OrderLineDto> OrderLines { get; set; }
 
         public static OrderDto FromDomain(Order order)
@@ -19,7 +18,6 @@ namespace CentricExpress.Business.DTOs
             
             return new OrderDto()
             {
-                CustomerId = order.CustomerId,
                 OrderLines = order.OrderLines?.Select(BuildOrderLineDto).ToList() ?? new List<OrderLineDto>()
             };
         }
@@ -36,7 +34,7 @@ namespace CentricExpress.Business.DTOs
         public Order ToDomain(ItemPrices itemPrices)
         {
             var orderLines = BuildDomainOrderLines(itemPrices);
-            return new Order(CustomerId, orderLines);
+            return new Order(orderLines);
         }
 
         private IEnumerable<OrderLine> BuildDomainOrderLines(ItemPrices itemPrices)
@@ -58,13 +56,6 @@ namespace CentricExpress.Business.DTOs
                 ItemId = itemId,
                 Quantity = quantity
             });
-
-            return this;
-        }
-
-        public OrderDto WithCustomer(Guid customerId)
-        {
-            this.CustomerId = customerId;
 
             return this;
         }
