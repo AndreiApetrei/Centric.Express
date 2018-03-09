@@ -1,6 +1,6 @@
-﻿using CentricExpress.Business.Services;
+﻿using System;
+using CentricExpress.Business.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace CentricExpress.WebApi.Controllers
 {
@@ -17,18 +17,13 @@ namespace CentricExpress.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(this.customerService.Get());
+            return Ok(customerService.Get());
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            if (id == null)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var customer = this.customerService.Get(id);
+            var customer = customerService.Get(id);
 
             if (customer == null)
             {

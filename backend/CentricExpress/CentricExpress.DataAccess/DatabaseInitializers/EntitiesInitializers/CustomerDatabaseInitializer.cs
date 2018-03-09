@@ -14,14 +14,14 @@ namespace CentricExpress.DataAccess.DatabaseInitializers.EntitiesInitializers
                 return;
             }
 
-            var items = new List<Customer> {
+            var customers = new List<Customer> {
                 new Customer(Guid.Parse("12a079e3-f6a7-4c2c-b575-bb01e3372683"))
                 {
                     Age = 35, FirstName = "Dummy", Surname = "User"
                 },
             };
 
-            context.Customers.AddRange(items);
+            context.Customers.AddRange(customers);
             context.SaveChanges();
         }
     }

@@ -6,6 +6,7 @@ namespace CentricExpress.Business.Domain
     {
         public Customer() : this(Guid.NewGuid())
         {
+            //orm
         }
 
         public Customer(Guid id)
