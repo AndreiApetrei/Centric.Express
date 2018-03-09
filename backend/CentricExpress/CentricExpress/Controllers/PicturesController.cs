@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Net.Mime;
 using CentricExpress.Business.DTOs;
 using CentricExpress.Business.Services;
 using Microsoft.AspNetCore.Mvc;

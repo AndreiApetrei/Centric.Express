@@ -25,5 +25,15 @@ namespace CentricExpress.Business.DTOs
                 Age = customer.Age
             };
         }
+
+        public Customer ToDomain()
+        {
+            return new Customer(Id)
+            {
+                Age = Age,
+                FirstName = FullName.Split(' ')[0],
+                Surname = FullName.Split(' ')[1]
+            };
+        }
     }
 }

@@ -9,5 +9,11 @@ namespace CentricExpress.Business.Services
         IList<CustomerDto> Get();
 
         CustomerDto Get(Guid id);
+
+        Guid Add(CustomerDto customerDto);
+
+        void Delete(Guid id);
+
+        CustomerDto Update(Guid id, CustomerDto customerDto);
     }
 }
