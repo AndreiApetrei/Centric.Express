@@ -8,8 +8,10 @@ namespace CentricExpress.Business.DTOs
         public Guid Id { get; set; }
         
         public string Description { get; set; }
-        
+
         public decimal Price { get; set; }
+
+        public string Currency { get; set; }
 
         public byte[] Picture { get; set; }
 
@@ -18,7 +20,7 @@ namespace CentricExpress.Business.DTOs
             return new Item(Id)
             {
                 Description = Description,
-                Price = Money.From(Price, Currency.Nothing)
+                Price = Money.From(Price, CurrencyParser.TryParse(Currency))
             };
         }
 
@@ -28,12 +30,13 @@ namespace CentricExpress.Business.DTOs
             {
                 return null;
             }
-
+            
             return new ItemDto
             {
                 Id = item.Id,
                 Description = item.Description,
                 Price = item.Price.Value,
+                Currency = item.Price.Currency,
                 Picture = item.Picture
             };
         }

@@ -70,7 +70,7 @@
 		{
 			"name": "Items by Id - JSON",
 			"request": {
-				"url": "http://localhost:50755/api/items/2ecfbe63-b8b4-4092-8169-1632b96a4039",
+				"url": "http://localhost:50755/api/items/de388c9a-2cfd-49fe-b0ef-089b3ac70136",
 				"method": "GET",
 				"header": [
 					{
@@ -120,7 +120,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Description\": \"0123456789\",\n\t\"Price\": 10\n}"
+					"raw": "{\n\t\"Description\": \"Test with RON\",\n\t\"Price\": 10,\n\t\"Currency\": \"RON\"\n}"
 				},
 				"description": ""
 			},
@@ -145,7 +145,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test</Description>\n    <Price>10</Price>\n</ItemDto>"
+					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>New test with EUR</Description>\n    <Price>10</Price>\n    <Currency>EUR</Currency>\n</ItemDto>"
 				},
 				"description": ""
 			},
@@ -170,7 +170,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test</Description>\n    <Price>10</Price>\n</ItemDto>"
+					"raw": "<ItemDto xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Description>test11111111</Description>\n    <Price>111</Price>\n    <Currency>Nothing</Currency>\n</ItemDto>"
 				},
 				"description": ""
 			},
@@ -179,7 +179,7 @@
 		{
 			"name": "Items Update - Valid",
 			"request": {
-				"url": "http://localhost:50755/api/items/2ecfbe63-b8b4-4092-8169-1632b96a4039",
+				"url": "http://localhost:50755/api/items/de388c9a-2cfd-49fe-b0ef-089b3ac70136",
 				"method": "PUT",
 				"header": [
 					{
@@ -195,7 +195,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Description\": \"1000000000\",\n\t\"Price\": 25\n}"
+					"raw": "{\n\t\"Description\": \"1000000000\",\n\t\"Price\": 25,\n\t\"Currency\": \"EUR\"\n}"
 				},
 				"description": ""
 			},

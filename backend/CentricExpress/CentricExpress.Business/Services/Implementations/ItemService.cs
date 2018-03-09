@@ -22,12 +22,8 @@ namespace CentricExpress.Business.Services.Implementations
         public IList<ItemDto> Get()
         {
             return itemRepository.Get()?
-                .Select(i => new ItemDto
-                {
-                    Id = i.Id,
-                    Description = i.Description,
-                    Price = i.Price.Value
-                }).ToList();
+                .Select(i => ItemDto.FromDomain(i))
+                .ToList();
         }
 
         public ItemDto Get(Guid id)
@@ -66,7 +62,7 @@ namespace CentricExpress.Business.Services.Implementations
             itemRepository.PrepareForUpdate(item.Price);
 
             item.Description = itemDto.Description;
-            item.Price = Money.From(itemDto.Price, Currency.Nothing);
+            item.Price = Money.From(itemDto.Price, CurrencyParser.TryParse(itemDto.Currency));
 
             itemRepository.UpdateItem(item);
             unitOfWork.Commit();
