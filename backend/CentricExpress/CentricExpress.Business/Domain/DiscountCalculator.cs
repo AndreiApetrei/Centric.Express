@@ -13,13 +13,13 @@ namespace CentricExpress.Business.Domain
 
         public Money GetDiscount(Order order, int existingPoints)
         {
-            return order.TotalAmount * GetProcent(existingPoints) * (1m/100m);
+            return order.TotalAmount * GetPercent(existingPoints) * (1m/100m);
         }
 
-        private int GetProcent(int existingPoints)
+        private int GetPercent(int existingPoints)
         {
             var customerType = customerTypeProvider.GetCustomerType(existingPoints);
-            var procents = new Dictionary<CustomerType, int>()
+            var percents = new Dictionary<CustomerType, int>()
             {
                 {CustomerType.Regular, 0},
                 {CustomerType.Bronze, 10},
@@ -27,7 +27,7 @@ namespace CentricExpress.Business.Domain
                 {CustomerType.Gold, 30},
             };
 
-            return procents[customerType];
+            return percents[customerType];
         }
     }
 }
